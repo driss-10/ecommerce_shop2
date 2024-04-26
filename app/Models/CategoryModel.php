@@ -13,29 +13,40 @@ class CategoryModel extends Model
 
     static public function getRecord()
     {
-    return self::select('category.*','users.name as created_by_name')
-        ->join('users','users.id', '=', 'category.created_by')
-        ->where('category.is_delete', '=' , 0)
-        ->orderBy('category.id', 'desc')
-        ->get();
-        
-
+        return self::select('category.*', 'users.name as created_by_name')
+            ->join('users', 'users.id', '=', 'category.created_by')
+            ->where('category.is_delete', '=', 0)
+            ->orderBy('category.id', 'desc')
+            ->get();
     }
 
-    static public function getSingle($id){
+    static public function getSingle($id)
+    {
         return self::find($id);
+    }
+    static public function getSingleSlug($slug)
+    {
+        return self::where('slug', '=', $slug)
+            ->where('category.status', '=', 0)
+            ->where('category.is_delete', '=', 0)
+            ->first();
     }
 
     static public function getRecordActive()
     {
-    return self::select('category.*')
-        ->join('users','users.id', '=', 'category.created_by')
-        ->where('category.is_delete', '=' , 0)
-        ->where('category.status', '=' , 0)
-        ->orderBy('category.name', 'asc')
-        ->get();
-        
-
+        return self::select('category.*')
+            ->join('users', 'users.id', '=', 'category.created_by')
+            ->where('category.is_delete', '=', 0)
+            ->where('category.status', '=', 0)
+            ->orderBy('category.name', 'asc')
+            ->get();
     }
-
+    static public function getRecordMenu()
+    {
+        return self::select('category.*')
+            ->join('users', 'users.id', '=', 'category.created_by')
+            ->where('category.is_delete', '=', 0)
+            ->where('category.status', '=', 0)
+            ->get();
+    }
 }

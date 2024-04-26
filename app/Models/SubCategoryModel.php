@@ -18,7 +18,7 @@ class SubCategoryModel extends Model
         ->join('users','users.id', '=', 'sub_category.created_by')
         ->where('sub_category.is_delete', '=' , 0)
         ->orderBy('sub_category.id', 'desc')
-        ->paginate(1);
+        ->paginate(10);
     }
 
     static public function getSingle($id){

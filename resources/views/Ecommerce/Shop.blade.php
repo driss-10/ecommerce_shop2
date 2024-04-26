@@ -40,19 +40,21 @@
                                 </div>
                                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
+                                        @php
+                                        $geyCategoryHeader =App\Models\CategoryModel::getRecordMenu();
+
+                                        @endphp
+
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li><a href="#">Men (20)</a></li>
-                                                <li><a href="#">Women (20)</a></li>
-                                                <li><a href="#">Bags (20)</a></li>
-                                                <li><a href="#">Clothing (20)</a></li>
-                                                <li><a href="#">Shoes (20)</a></li>
-                                                <li><a href="#">Accessories (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
+                                                @foreach ($geyCategoryHeader as $value)
+                                                <li><a href="{{$value->slug}}">{{$value->name}}</a></li>
+                                                @endforeach
                                             </ul>
                                         </div>
+
+
+
                                     </div>
                                 </div>
                             </div>

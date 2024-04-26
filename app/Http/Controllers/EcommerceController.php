@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryModel;
 use Illuminate\Http\Request;
 
 class EcommerceController extends Controller
@@ -10,9 +11,15 @@ class EcommerceController extends Controller
     {
         return view('Ecommerce.Home');
     }
-    public function Shop()
+    public function Shop($slug)
     {
-        return view('Ecommerce.Shop');
+       /*  $getCategory = CategoryModel::getSingleSlug($slug);
+        if (!empty($getCategory)) {
+            $data['getCategory'] = $getCategory; */
+            return view('Ecommerce.Shop');
+        /* } else {
+           abort(404);
+         } */
     }
     public function Contact()
     {
@@ -34,5 +41,4 @@ class EcommerceController extends Controller
     {
         return view('Ecommerce.ShopDetails');
     }
-
 }
