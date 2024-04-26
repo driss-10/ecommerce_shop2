@@ -11,7 +11,7 @@ class EcommerceController extends Controller
     {
         return view('Ecommerce.Home');
     }
-    public function Shop($slug)
+    public function Shop()
     {
        /*  $getCategory = CategoryModel::getSingleSlug($slug);
         if (!empty($getCategory)) {
