@@ -7,11 +7,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+
                 <div class="breadcrumb__text">
-                    <h4>Shop</h4>
+                    <h4 class="text-center">{{$getCategory->name}}</h4>
                     <div class="breadcrumb__links">
                         <a href="/">Home</a>
-                        <span>Shop</span>
+                        <a href="/Shop">Shop</a>
+                        <span>{{$getCategory->name}}</span>
+
                     </div>
                 </div>
             </div>
@@ -212,12 +215,12 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-2.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -247,13 +250,13 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item sale">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-3.jpg">
                                 <span class="label">Sale</span>
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -283,12 +286,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-4.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -318,13 +321,13 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item sale">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-6.jpg">
                                 <span class="label">Sale</span>
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -354,12 +357,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-7.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -389,12 +392,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-8.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -424,12 +427,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-9.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-9.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -459,13 +462,13 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item sale">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-10.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-10.jpg">
                                 <span class="label">Sale</span>
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -495,12 +498,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-11.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-11.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -530,13 +533,13 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item sale">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-12.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-12.jpg">
                                 <span class="label">Sale</span>
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -566,12 +569,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-13.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-13.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -601,12 +604,12 @@
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-14.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-14.jpg">
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/compare.png" alt=""> <span>Compare</span></a>
                                     </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{url('')}}/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">

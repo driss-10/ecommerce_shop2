@@ -10,24 +10,24 @@
     <title>@yield('title')</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="{{url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap')}}" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/logins/login-4/assets/css/login-4.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{url('https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('https://unpkg.com/bs-brain@2.0.3/components/logins/login-4/assets/css/login-4.css')}}">
+    <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/style.css')}}" type="text/css">
 </head>
 
 <body>
     <!-- Page Preloder -->
- <!--    <div id="preloder">
+    <!--    <div id="preloder">
         <div class="loader"></div>
     </div> -->
 
@@ -49,9 +49,9 @@
             </div>
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
+            <a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a>
+            <a href="#"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price"><a href="/Login">LOGIN</a></div>
 
         </div>
@@ -95,14 +95,14 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="/"><img src="img/logo.png" alt=""></a>
+                        <a href="/"><img src="{{url('')}}/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/Shop">Shop</a></li>
+                            <li><a href="{{route('Shop')}}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="/About">About Us</a></li>
@@ -119,12 +119,12 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href=""><img src="img/icon/heart.png" alt=""></a>
-                        <a href="/ShoppingCart"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                        <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
+                        <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
+                        <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
                         <div class="price"><a href="/Login">LOGIN</a></div>
-                       
-                        
+
+
 
                     </div>
                 </div>
@@ -151,10 +151,10 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="{{url('')}}/img/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
+                        <a href="#"><img src="{{url('')}}/img/payment.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
@@ -221,17 +221,17 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-   <!--  <script src="assets\tinymce\jQuery.js"></script> -->
+    <script src="{{url('')}}/js/jquery-3.3.1.min.js"></script>
+    <script src="{{url('')}}/js/bootstrap.min.js"></script>
+    <script src="{{url('')}}/js/jquery.nice-select.min.js"></script>
+    <script src="{{url('')}}/js/jquery.nicescroll.min.js"></script>
+    <script src="{{url('')}}/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{url('')}}/js/jquery.countdown.min.js"></script>
+    <script src="{{url('')}}/js/jquery.slicknav.js"></script>
+    <script src="{{url('')}}/js/mixitup.min.js"></script>
+    <script src="{{url('')}}/js/owl.carousel.min.js"></script>
+    <script src="{{url('')}}/js/main.js"></script>
+    <!--  <script src="assets\tinymce\jQuery.js"></script> -->
 
 </body>
 

@@ -10,7 +10,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\ColorController;
 use App\Http\Controllers\EcommerceAuthController;
-use App\Http\Controllers\EcommerceController ;
+use App\Http\Controllers\EcommerceController;
 
 Route::get('admin', function () {
     return view('admin.auth.login');
@@ -83,7 +83,9 @@ Route::group(['midlleware' => 'admin'], function () {
 
 
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
-Route::get('/Shop{slug?}', [EcommerceController::class, 'Shop'])->name('Shop');
+/* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
+Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
+Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
 Route::get('/Contact', [EcommerceController::class, 'Contact'])->name('Contact');
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
