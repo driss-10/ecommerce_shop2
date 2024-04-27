@@ -68,8 +68,8 @@ class BrandController extends Controller
     }
     public function delete($id){  
         $brand =  BrandModel::getSingle($id);
-        $brand ->is_delete = 1;
-        $brand ->save();
+        $brand ->delete();
+        
         return  redirect('admin/brand/list')->with('success', "Brand successfully deleted");
 
     }

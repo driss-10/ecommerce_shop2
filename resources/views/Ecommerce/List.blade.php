@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Shop')
+
+
 
 @section('content')
 <!-- Breadcrumb Section Begin -->
@@ -9,11 +10,22 @@
             <div class="col-lg-12">
 
                 <div class="breadcrumb__text">
+                    @if (!empty($getSubCategory))
+                    <h4 class="text-center">{{$getSubCategory->name}}</h4>
+                    @else
                     <h4 class="text-center">{{$getCategory->name}}</h4>
+                    @endif
+
                     <div class="breadcrumb__links">
                         <a href="/">Home</a>
                         <a href="/Shop">Shop</a>
+                        @if (!empty($getSubCategory))
+                        <span><a href="{{url($getCategory->slug)}}">{{$getCategory->name}}</a></span>
+                        <span>{{$getSubCategory->name}}</span>
+                        @else
                         <span>{{$getCategory->name}}</span>
+                        @endif
+
 
                     </div>
                 </div>

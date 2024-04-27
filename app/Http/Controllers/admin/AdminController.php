@@ -59,8 +59,8 @@ class AdminController extends Controller
         public function delete($id)
         {
             $user = User::getSingle($id);       
-            $user->is_delete = 1;
-            $user->save();
+            $user->delete();;
+            
             return  redirect()->back()->with('success', "admin successfully deleted");
 
             

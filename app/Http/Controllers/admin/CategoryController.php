@@ -69,8 +69,7 @@ class CategoryController extends Controller
 
     public function delete($id){  
         $category =  CategoryModel::getSingle($id);
-        $category ->is_delete = 1;
-        $category->save();
+        $category ->delete();
         return  redirect('admin/category/list')->with('success', "Category successfully deleted");
 
     }
