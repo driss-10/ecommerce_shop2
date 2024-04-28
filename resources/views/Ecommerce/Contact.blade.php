@@ -9,6 +9,8 @@
 <!-- Map End -->
 
 <!-- Contact Section Begin -->
+@include('admin.layouts.messages')
+
 <section class="contact spad">
     <div class="container">
         <div class="row">
@@ -34,18 +36,35 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <form action="#">
+                    <form action="{{route('contact.send')}}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
+                                <input type="text" name="name" id="name" placeholder="Name">
+                                @error('name')
+                                <span class="text-500" style="color: red;">{{$message}}</span>
+                            @enderror
                             </div>
+                            
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Email">
+                                <input type="text" name="email" id="email" placeholder="Email">
+                                @error('email')
+                                <span class="text-500" style="color: red;">{{$message}}</span>
+                                @enderror
                             </div>
+                           
                             <div class="col-lg-12">
-                                <textarea placeholder="Message"></textarea>
-                                <button type="submit" class="site-btn">Send Message</button>
+                                <textarea  name="message" id="message"  placeholder="Message"></textarea>
+                                
                             </div>
+                            @error('message')
+                                    <span class="text-500"  style="color: red;">{{$message}}</span>
+                                @enderror
+                            <div class="col-lg-6">
+                                <button type="submit"class="site-btn">Send Message</button>
+                            </div>
+
+                            
                         </div>
                     </form>
                 </div>

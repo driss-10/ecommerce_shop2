@@ -52,10 +52,7 @@ class EcommerceController extends Controller
         }
     }
 
-    public function Contact()
-    {
-        return view('Ecommerce.Contact');
-    }
+   
     public function ShoppingCart()
     {
         return view('Ecommerce.ShoppingCart');
