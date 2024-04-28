@@ -11,6 +11,14 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\ColorController;
 use App\Http\Controllers\EcommerceAuthController;
 use App\Http\Controllers\EcommerceController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessageController;
+
+
+
+
+
+
 
 Route::get('admin', function () {
     return view('admin.auth.login');
@@ -86,7 +94,7 @@ Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 /* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
 Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
 Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
-Route::get('/Contact', [EcommerceController::class, 'Contact'])->name('Contact');
+Route::get('/Contact', [ContactController::class, 'Contact'])->name('Contact.show');
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
@@ -94,3 +102,7 @@ Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOu
 Route::get('/ShopDetails', [EcommerceController::class, 'ShopDetails'])->name('ShopDetails');
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
 Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('Register');
+
+
+Route::post('/Contact', [ContactController::class, 'send'])->name('contact.send');
+Route::get('admin/message/list', [MessageController::class, 'ShowMessage']);
