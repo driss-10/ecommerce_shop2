@@ -53,8 +53,14 @@ class ProductModel extends Model
         $return = $return->where('product.is_delete', '=', 0)
             ->where('product.status', '=', 0)
             ->orderBy('product.id', 'desc')
-            ->paginate(20);
+            ->paginate(1);
         return $return;
+    }
+
+    //images
+    static public function getImageSingle($product_id)
+    {
+        return ProductImageModel::where('product_id', '=', $product_id)->first();
     }
 
     public function getColor()

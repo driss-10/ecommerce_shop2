@@ -224,20 +224,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">                    
+                <div class="row">
                     @foreach ($getProduct as $value)
+                    @php
+                    $getProductImages =$value->getImageSingle($value->id)
+                    @endphp
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{url('')}}/img/product/product-2.jpg">
+                            @if (!empty($getProductImages) && !empty($getProductImages->getLogo()))
+                            <div class="product__item__pic set-bg" data-setbg="{{$getProductImages->getLogo()}}">
+
+                                @endif
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
-                                   
+
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                               <h6>{{$value->sub_category_name}}</h6>
-                                <a href="{{url($value->slug)}}"><h6>{{$value->title}}</h6></a>
-                               
+                                <h6>{{$value->sub_category_name}}</h6>
+                                <a href="{{url($value->slug)}}">
+                                    <h6>{{$value->title}}</h6>
+                                </a>
+
                                 <div class="rating">
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
@@ -261,19 +269,18 @@
                         </div>
                     </div>
                     @endforeach
-                   
+
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
+                        <div class="">
+                            {!! $getProduct->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>

@@ -964,15 +964,9 @@ footer .hero__social a:hover {
 	opacity: 1;
 }
 
-.product__item:hover .product__item__text a {
-	top: 22px;
-	opacity: 1;
-	visibility: visible;
-}
 
-.product__item:hover .product__item__text h6 {
-	opacity: 0;
-}
+
+
 
 .product__item:hover .product__item__text .product__color__select {
 	opacity: 1;
@@ -1067,14 +1061,11 @@ footer .hero__social a:hover {
 	position: absolute;
 	left: 0;
 	top: 0;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
-	transition: all, 0.3s;
+	margin-top: 8px;
+
 }
 
-.product__item__text h6 {
+.product__item__text  p a{
 	color: #111111;
 	font-size: 15px;
 	font-weight: 600;
