@@ -58,14 +58,14 @@
                                 <hr>
                                     <div class="form-group">
                                         <label >Meta title</label>
-                                        <input type="text" class="form-control"  name="Meta_title"  value="{{old('Meta_title',$getRecord->Meta_title)}}" 
+                                        <input type="text" class="form-control"  name="meta_title"  value="{{old('meta_title',$getRecord->meta_title)}}" 
                                          placeholder="Meta title" >
                                     </div>
 
 
                                     <div class="form-group">
                                         <label >Meta Keywords </label>
-                                        <input type="text" class="form-control"  name="Meta_title"  value="{{old('Meta_title',$getRecord->Meta_title)}}" 
+                                        <input type="text" class="form-control"  name="meta_title"  value="{{old('meta_title',$getRecord->meta_title)}}" 
                                         placeholder="Meta_title" >
                                     </div>
 

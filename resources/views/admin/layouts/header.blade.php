@@ -103,7 +103,7 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a href="{{url('admin/message/list')}}" class="nav-link  @if( Request::segment(2) == 'product' ) active @endif">
+          <a href="{{url('admin/message/list')}}" class="nav-link  @if( Request::segment(2) == 'message' ) active @endif">
             <i class="nav-icon fas fa-list-alt"></i>
             <p>
               Messages
