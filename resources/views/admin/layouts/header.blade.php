@@ -5,16 +5,9 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
+    <a href="/">Home</a>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-    
 
-      <!-- Messages Dropdown Menu -->
-
-    
-      
-    </ul>
   </nav>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -78,7 +71,7 @@
     </li>
     <li class="nav-item ">
       <a href="{{url('admin/brand/list')}}" class="nav-link  @if( Request::segment(2) == 'brand' ) active @endif">
-        <i class="nav-icon fas fa-list-alt"></i>
+        <i class="nav-icon fas fa-apple-alt" aria-hidden="true"></i>
         <p>
           Brand
         </p>
@@ -87,7 +80,7 @@
   </li>
   <li class="nav-item ">
     <a href="{{url('admin/color/list')}}" class="nav-link  @if( Request::segment(2) == 'color' ) active @endif">
-      <i class="nav-icon fas fa-list-alt"></i>
+      <i class="nav-icon fas fa-circle " aria-hidden="true"></i>
       <p>
         Color
       </p>
@@ -96,7 +89,7 @@
 </li>
         <li class="nav-item ">
           <a href="{{url('admin/product/list')}}" class="nav-link  @if( Request::segment(2) == 'product' ) active @endif">
-            <i class="nav-icon fas fa-list-alt"></i>
+            <i class="nav-icon fas fa-box" aria-hidden="true"></i>
             <p>
               Product
             </p>
@@ -104,7 +97,7 @@
         </li>
         <li class="nav-item ">
           <a href="{{url('admin/message/list')}}" class="nav-link  @if( Request::segment(2) == 'message' ) active @endif">
-            <i class="nav-icon fas fa-list-alt"></i>
+            <i class="nav-icon fas fa-comments" aria-hidden="true"></i>
             <p>
               Messages
             </p>

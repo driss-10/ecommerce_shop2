@@ -74,6 +74,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
+
                         <div class="header__top__left">
                             <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
@@ -91,6 +92,10 @@
                                     <li>EUR</li>
                                     <li>USD</li>
                                 </ul>
+                            </div>
+                        
+                            <div class="header__top__links" >
+                                <a href="/admin/dashboard">Go To Admin</a>
                             </div>
                         </div>
                     </div>
