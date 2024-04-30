@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\ColorController;
 use App\Http\Controllers\EcommerceAuthController;
 use App\Http\Controllers\EcommerceController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
 
