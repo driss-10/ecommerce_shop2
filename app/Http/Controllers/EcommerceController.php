@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
 use App\Models\ProductModel;
+use App\Models\ColorModel;
+use App\Models\BrandModel;
 use App\Models\SubCategoryModel;
 use Illuminate\Http\Request;
 
@@ -22,6 +24,8 @@ class EcommerceController extends Controller
     {
         $getCategory = CategoryModel::getSingleSlug($slug);
         $getSubCategory = SubCategoryModel::getSingleSlug($subslug);
+        $data['getColor']=ColorModel::getRecordActive();
+        $data['getBrand']=BrandModel::getRecordActive();
 
 
         if (!empty($getCategory) && !empty($getSubCategory)) {

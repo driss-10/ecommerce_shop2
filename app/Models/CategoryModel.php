@@ -49,4 +49,7 @@ class CategoryModel extends Model
             ->where('category.status', '=', 0)
             ->get();
     }
+   
+    
+    
 }

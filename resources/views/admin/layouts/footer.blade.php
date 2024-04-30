@@ -5,5 +5,5 @@
 
 
 <footer class="main-footer">
-    <strong>Copyright &copy; {{date('Y')}} <strong>E</strong>-commerce</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} <strong>E</strong>-commerce</strong> 
   </footer>

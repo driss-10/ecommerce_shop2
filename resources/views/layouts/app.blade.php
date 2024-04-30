@@ -3,16 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> @yield('title') {{!empty($Meta_title)? $Meta_title : ''}} </title>
 
     @if (!empty($Meta_Keywords))
-    <meta name="Keywords" content="{{$Meta_Keywords}}"   
-    @endif
-    @if (!empty($Meta_Description))
-    <meta name="Description" content="{{$Meta_Description}}">  
+    <meta name="Keywords" content="{{$Meta_Keywords}}" @endif @if (!empty($Meta_Description)) <meta name="Description" content="{{$Meta_Description}}">
     @endif
 
     <!-- Google Font -->
@@ -42,7 +39,8 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="#">Sign in</a>
+
+                <a href="/Login">Sign in</a>
                 <a href="#">FAQs</a>
             </div>
             <div class="offcanvas__top__hover">
@@ -58,7 +56,7 @@
             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
             <a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a>
             <a href="#"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-            <div class="price"><a href="/Login">LOGIN</a></div>
+            <div class="price"></div>
 
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -82,7 +80,7 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Sign in</a>
+                            <a href="/Login">Sign in</a>
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -93,8 +91,8 @@
                                     <li>USD</li>
                                 </ul>
                             </div>
-                        
-                            <div class="header__top__links" >
+
+                            <div class="header__top__links">
                                 <a href="/admin/dashboard">Go To Admin</a>
                             </div>
                         </div>
@@ -125,6 +123,7 @@
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="/Contact">Contacts</a></li>
+                            
                         </ul>
                     </nav>
                 </div>
@@ -133,7 +132,8 @@
                         <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
                         <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
                         <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price"><a href="/Login">LOGIN</a></div>
+                        <div class="price"></div>
+                        
 
 
 

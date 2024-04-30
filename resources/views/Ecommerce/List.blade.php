@@ -56,23 +56,22 @@
                                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         @php
-                                        $geyCategoryHeader =App\Models\CategoryModel::getRecordMenu();
+                                        $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
                                         @endphp
-
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                @foreach ($geyCategoryHeader as $value)
+                                                @foreach ($getCategoryHeader as $value)
+
                                                 <li><a href="{{url('/List/'.$value->slug  )}}">{{$value->name}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
@@ -80,12 +79,15 @@
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
+                                            @foreach ($getBrand as $B_value )
                                             <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
+                                                <li><a href="#">{{$B_value->name}}</a></li>
+
+
                                             </ul>
+
+                                            @endforeach
+
                                         </div>
                                     </div>
                                 </div>
@@ -151,33 +153,13 @@
                                 <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar__color">
-                                            <label class="c-1" for="sp-1">
-                                                <input type="radio" id="sp-1">
-                                            </label>
-                                            <label class="c-2" for="sp-2">
-                                                <input type="radio" id="sp-2">
-                                            </label>
-                                            <label class="c-3" for="sp-3">
-                                                <input type="radio" id="sp-3">
-                                            </label>
-                                            <label class="c-4" for="sp-4">
-                                                <input type="radio" id="sp-4">
-                                            </label>
-                                            <label class="c-5" for="sp-5">
-                                                <input type="radio" id="sp-5">
-                                            </label>
-                                            <label class="c-6" for="sp-6">
-                                                <input type="radio" id="sp-6">
-                                            </label>
-                                            <label class="c-7" for="sp-7">
-                                                <input type="radio" id="sp-7">
-                                            </label>
-                                            <label class="c-8" for="sp-8">
-                                                <input type="radio" id="sp-8">
-                                            </label>
-                                            <label class="c-9" for="sp-9">
-                                                <input type="radio" id="sp-9">
-                                            </label>
+                                            @foreach ($getColor as $_color )
+
+                                            <a href="javascript:;" style="background: {{$_color->code}};"><span>{{$_color->name}}</span> </a>
+
+                                            @endforeach
+
+
                                         </div>
                                     </div>
                                 </div>
