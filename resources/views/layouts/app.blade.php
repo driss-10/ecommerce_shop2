@@ -132,6 +132,21 @@
                         <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
                         <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
                         <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+                        
+                       
+                        @auth
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">Logout</button>
+                            <a href="{{route('profile.edit')}}">
+                                <img src="img/icon/user.png" width="18px" alt="">
+                            </a>
+                        </form>
+                    @endauth
+
+                    @guest
+                        <a href="/Login">LOGIN</a>
+                    @endguest
                         <div class="price"></div>
                         
 
