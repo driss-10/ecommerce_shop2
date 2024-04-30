@@ -1,10 +1,9 @@
 @extends('layouts.app')
-@section('title','Login')
+@section('title', 'Login')
 @section('content')
 
 <!DOCTYPE html>
 <html lang="zxx">
-
 
 <body>
     <section class="p-3 p-md-4 p-xl-5">
@@ -23,12 +22,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="" id="a" method="">
-                                {{csrf_field()}}
+                            <form action="{{ route('auth.store') }}" method="POST">
+                                @csrf
                                 <div class="row gy-3 gy-md-4 overflow-hidden">
                                     <div class="col-12">
                                         <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                                        <input type="name" class="form-control" placeholder="name" name="name" id="name" value="" required>
+                                        <input type="name" class="form-control" placeholder="Name" name="name" id="name" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="lastname" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                        <input type="lastname" class="form-control" placeholder="Last Name" name="lastname" id="lastname" value="" required>
                                     </div>
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -37,6 +40,30 @@
                                     <div class="col-12">
                                         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                                         <input type="password" class="form-control" placeholder="********" name="password" id="password" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="password_confirmation" class="form-label">Password Confirmation <span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" placeholder="********" name="password_confirmation" id="password_confirmation" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Phone" name="phone" id="phone" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Address" name="address" id="address" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="codepostal" class="form-label">codepostal <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="codepostal" name="codepostal" id="codepostal" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
+                                        <input type="country" class="form-control" placeholder="Country" name="country" id="country" value="" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                                        <input type="city" class="form-control" placeholder="City" name="city" id="city" value="" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
@@ -58,7 +85,7 @@
                                     <hr class="mt-5 mb-4 border-secondary-subtle">
                                     <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
                                         <a href="/Login" class="link-secondary text-decoration-none">Login ?</a>
-                                        <a href="#!" class="link-secondary text-decoration-none">Forgot password</a>
+                                        <a href="/forgot" class="link-secondary text-decoration-none">Forgot password</a>
                                     </div>
                                 </div>
                             </div>
@@ -92,9 +119,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </section>
 
     <script>
@@ -103,7 +127,7 @@
             console.log('hi');
         });
     </script>
-   
+
 </body>
 
 </html>

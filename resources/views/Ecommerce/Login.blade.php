@@ -19,7 +19,8 @@
                 </div>
               </div>
             </div>
-            <form action="#!">
+            <form action='{{route('auth.login')}}' method="POST">
+                @csrf
               <div class="row gy-3 gy-md-4 overflow-hidden">
                 <div class="col-12">
                   <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -49,7 +50,7 @@
                 <hr class="mt-5 mb-4 border-secondary-subtle">
                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
                   <a href="/Register" class="link-secondary text-decoration-none">Create new account</a>
-                  <a href="#!" class="link-secondary text-decoration-none">Forgot password</a>
+                  <a href="/forgot" class="link-secondary text-decoration-none">Forgot password</a>
                 </div>
               </div>
             </div>
