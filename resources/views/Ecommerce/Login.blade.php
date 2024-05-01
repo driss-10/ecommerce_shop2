@@ -29,6 +29,7 @@
                 <div class="col-12">
                   <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
                   <input type="password" class="form-control" name="password" placeholder="********"  id="password" value="" required>
+                  @include('admin.layouts.messages')
                 </div>
                 <div class="col-12">
                   <div class="form-check">

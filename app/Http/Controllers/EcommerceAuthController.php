@@ -61,7 +61,7 @@ class EcommerceAuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('Home');
         }
-
+        return redirect()->back()->with('error', "Email not found in system try again  or your password not true");
         return back()->withInput()->withErrors(['email' => 'Invalid email or password']);
     }
     public function logout(Request $request)
