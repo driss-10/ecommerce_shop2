@@ -29,7 +29,7 @@
                                     
                                     <div class="col-12">
                                         <label for="email" class="form-label">Enter your email to forgot password <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" placeholder="enter your email" name="email" id="email" value="{{'email'}}" required>
+                                        <input type="email" class="form-control" placeholder="enter your email" name="email" id="email" value="" required>
                                     </div>
                                     @include('admin.layouts.messages')
                                     
