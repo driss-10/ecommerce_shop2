@@ -56,6 +56,12 @@ class EcommerceController extends Controller
         }
     }
 
+    public function getPoductAjax(Request $request){
+        $getProdut = ProductModel::getProduct();
+        dd($getProdut)->all();
+
+    }
+
    
     public function ShoppingCart()
     {

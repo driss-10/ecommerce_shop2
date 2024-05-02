@@ -4,6 +4,7 @@
 
 @section('content')
 <!-- Breadcrumb Section Begin -->
+
 <section class="breadcrumb-option">
     <div class="container">
         <div class="row">
@@ -42,7 +43,8 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="#">
+                        <form action="" id="FilterForm">
+                            {{csrf_field()}}
                             <input type="text" placeholder="Search...">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
@@ -80,11 +82,16 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
                                             @foreach ($getBrand as $B_value )
-                                            <ul>
-                                                <li><a href="#">{{$B_value->name}}</a></li>
+                                            
+                                                <ul class="form-check">
 
 
+                                                <input class="form-check-input ChangeBrand" type="checkbox" id='brand-{{$B_value->id}}' value='{{$B_value->id}}'>
+                                                <label class="form-check-label ChangeBrand" for="brand-{{$B_value->id}}">
+                                                    {{$B_value->name}}
+                                                </label>
                                             </ul>
+
 
                                             @endforeach
 
@@ -155,7 +162,7 @@
                                         <div class="shop__sidebar__color">
                                             @foreach ($getColor as $_color )
 
-                                            <a href="javascript:;" style="background: {{$_color->code}};"><span>{{$_color->name}}</span> </a>
+                                            <a href="javascript:;" id='{{ $_color->id}}' data-val='0' class='ChangeColor' style="background: {{$_color->code}};"><span>{{$_color->name}}</span> </a>
 
                                             @endforeach
 
@@ -266,8 +273,71 @@
             </div>
         </div>
     </div>
+    <script>
+        $('.ChangeBrand').change(function() {
+            var ids = '';
+            $('.ChangeBrand').each(function() {
+                if (this.checked) {
+                    var id = $(this).val();
+                    ids += id + ',';
+                }
+            });
+            $('#get_brand_id').val(ids);
+            FilterForm();
+
+
+        });
+
+        $('.ChangeColor').click(function() {
+            var id = $(this).attr('id');
+            var status = $(this).attr('data-val');
+            if (status == 0) {
+                $(this).attr('data-val', 1);
+                $(this).addClass('active-color');
+            } else {
+                $(this).attr('data-val', 0);
+                $(this).removeClass('active-color');
+            }
+            var ids = '';
+            $('.ChangeColor').each(function() {
+                var status = $(this).attr('data-val');
+                if (status == 1) {
+                    var id = $(this).attr('id');
+                    ids += id + ',';
+                }
+            });
+            console.log(ids);
+            $('#get_color_id').val(ids);
+            FilterForm();
+
+        });
+
+        function FilterForm() {
+            $.ajax({
+                type: "get", // Use POST method
+                url: "{{ route('getPoductAjax') }}",
+                data: $('#FilterForm').serialize(),
+                dataType: "json",
+                success: function(data) {
+                    // Handle success response
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    console.error(error);
+                }
+            });
+
+        }
+    </script>
+
+
+
 </section>
 <!-- Shop Section End -->
 
+
+
+@endsection
+@section('script')
 
 @endsection

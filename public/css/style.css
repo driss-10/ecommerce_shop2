@@ -733,6 +733,11 @@ footer .hero__social a:hover {
 	position: relative;
 }
 
+.active-color {
+	border: 3px solid #000 !important;
+}
+
+
 .banner__item__text a:after {
 	position: absolute;
 	left: 0;
@@ -1065,7 +1070,7 @@ footer .hero__social a:hover {
 
 }
 
-.product__item__text  p a{
+.product__item__text p a {
 	color: #111111;
 	font-size: 15px;
 	font-weight: 600;
@@ -1246,7 +1251,7 @@ footer .hero__social a:hover {
 
 .shop__sidebar__categories ul li a,
 .shop__sidebar__price ul li a,
-.shop__sidebar__brand ul li a {
+.shop__sidebar__brand ul  input {
 	color: #b7b7b7;
 	font-size: 15px;
 	line-height: 32px;
@@ -1257,7 +1262,7 @@ footer .hero__social a:hover {
 
 .shop__sidebar__categories ul li a:hover,
 .shop__sidebar__price ul li a:hover,
-.shop__sidebar__brand ul li a:hover {
+.shop__sidebar__brand ul  input:hover {
 	color: #111111;
 }
 
@@ -1327,7 +1332,7 @@ footer .hero__social a:hover {
 .shop__sidebar__color a span {
 	position: absolute;
 	visibility: hidden;
-	
+
 }
 
 .shop__sidebar__tags {

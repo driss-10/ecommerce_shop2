@@ -121,12 +121,8 @@
         </div>
     </section>
 
-    <script>
-        $('body').delegate('submit', '#a', function(e) {
-            e.preventDefault();
-            console.log('hi');
-        });
-    </script>
+
+   
 
 </body>
 

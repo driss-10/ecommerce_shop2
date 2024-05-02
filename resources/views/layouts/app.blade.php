@@ -13,6 +13,7 @@
     @endif
 
     <!-- Google Font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="{{url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap')}}" rel="stylesheet">
 
     <!-- Css Styles -->
@@ -40,7 +41,9 @@
         <div class="offcanvas__option">
             <div class="offcanvas__links">
 
+                @guest
                 <a href="/Login">Sign in</a>
+                 @endguest
                 <a href="#">FAQs</a>
             </div>
             <div class="offcanvas__top__hover">
@@ -80,7 +83,11 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                            <a href="/Login">Sign in</a>
+
+                                @guest
+                                <a href="/Login">Sign in</a>
+
+                                @endguest
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -123,7 +130,7 @@
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="/Contact">Contacts</a></li>
-                            
+
                         </ul>
                     </nav>
                 </div>
@@ -132,8 +139,8 @@
                         <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
                         <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
                         <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-                        
-                       
+
+
                         @auth
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -142,13 +149,11 @@
                                 <img src="img/icon/user.png" width="18px" alt="">
                             </a>
                         </form>
-                    @endauth
+                        @endauth
 
-                    @guest
-                        <a href="/Login">LOGIN</a>
-                    @endguest
+
                         <div class="price"></div>
-                        
+
 
 
 
@@ -257,6 +262,7 @@
     <script src="{{url('')}}/js/mixitup.min.js"></script>
     <script src="{{url('')}}/js/owl.carousel.min.js"></script>
     <script src="{{url('')}}/js/main.js"></script>
+
     <!--  <script src="assets\tinymce\jQuery.js"></script> -->
 
 </body>
