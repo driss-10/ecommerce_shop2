@@ -36,7 +36,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <form action="{{route('contact.send')}}" method="POST">
+                    <form action="{{route('contact.send')}}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6">

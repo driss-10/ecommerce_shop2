@@ -83,7 +83,7 @@
                                         <div class="shop__sidebar__brand">
                                             @foreach ($getBrand as $B_value )
                                             
-                                                <ul class="form-check">
+                                                <ul class="form-check" style="padding-left: 10px">
 
 
                                                 <input class="form-check-input ChangeBrand" type="checkbox" id='brand-{{$B_value->id}}' value='{{$B_value->id}}'>

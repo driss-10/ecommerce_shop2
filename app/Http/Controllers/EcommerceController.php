@@ -55,6 +55,7 @@ class EcommerceController extends Controller
             abort(404);
         }
     }
+    
 
     public function getPoductAjax(Request $request){
         $getProdut = ProductModel::getProduct();
@@ -65,6 +66,9 @@ class EcommerceController extends Controller
    
     public function ShoppingCart()
     {
+        if (!auth()->check()) {
+            return redirect()->route('Login');
+        }
         return view('Ecommerce.ShoppingCart');
     }
     public function About()
@@ -77,6 +81,10 @@ class EcommerceController extends Controller
     }
     public function ShopDetails()
     {
+        if (!auth()->check()) {
+            return redirect()->route('Login');
+        }
         return view('Ecommerce.ShopDetails');
     }
+    
 }

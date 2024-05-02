@@ -14,9 +14,11 @@ class ContactController extends Controller
 {
     public function Contact()
     {
+        if (!auth()->check()) {
+            return redirect()->route('Login');
+        }
         return view('Ecommerce.Contact');
     }
-
     public function send()
     {
         $data= request()->validate([

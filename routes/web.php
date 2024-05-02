@@ -114,5 +114,6 @@ Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
 
 
-Route::get('/Contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/Contact', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/Contact', [ContactController::class, 'Contact']);
 Route::get('admin/message/list', [MessageController::class, 'ShowMessage']);
