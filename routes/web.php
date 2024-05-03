@@ -105,10 +105,15 @@ Route::get('/ShopDetails', [EcommerceController::class, 'ShopDetails'])->name('S
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
 Route::post('/logout', [EcommerceAuthController::class, 'logout'])->name('logout');
-// Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::put('/profile/password', [ProfileController::class, 'update'])->name('profile.update');
+
+
+
 
 Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');

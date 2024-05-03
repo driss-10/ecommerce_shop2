@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /* public function index(){
+    public function index(){
          if (!auth()->check()) {
              return redirect()->route('Login');
         }
          $user = Auth::user();
-        return view('profile.Profile',compact('user'));
-    }*/
+        return view('Profile.profile',compact('user'));
+    }
     
     
     public function edit(){
