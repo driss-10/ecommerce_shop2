@@ -43,12 +43,14 @@ class SubCategoryModel extends Model
         ->get();
     }
     public function TotalProduct()
-    {
-        return $this->hasMany(ProductModel::class, 'sub_category_id')
-            ->where('category.is_delete', '=', 0)
-            ->where('category.status', '=', 0)
-            ->count();
-    }
+{
+    return $this->hasMany(ProductModel::class, 'sub_category_id')
+        ->join('category', 'product.category_id', '=', 'category.id') // Join with the category table
+        ->where('category.is_delete', '=', 0)
+        ->where('category.status', '=', 0)
+        ->count();
+}
+
   
 
 

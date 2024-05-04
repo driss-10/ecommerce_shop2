@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class ProductModel extends Model
 {
@@ -31,6 +32,7 @@ class ProductModel extends Model
     }
     static public function getProduct($category_id = '', $subcategory_id = '')
     {
+        $request = app('request');
         $return = ProductModel::select(
             'product.*',
             'users.name as created_by_name',
@@ -46,12 +48,30 @@ class ProductModel extends Model
         if (!empty($category_id)) {
             $return = $return->where('product.category_id', '=', $category_id);
         }
+
         if (!empty($subcategory_id)) {
             $return = $return->where('product.sub_category_id
             ', '=', $subcategory_id);
         }
+        if (!empty($request->get('sub_category_id'))) {
+            $subcategory_id = rtrim($request->get('sub_category_id'), ',');
+            $subcategory_id_arry = explode(",", $subcategory_id);
+            $return = $return->whereIn('product.sub_category_id', $subcategory_id_arry);
+        }
+        if (!empty($request->get('brand_id'))) {
+            $brand_id = rtrim($request->get('brand_id'), ',');
+            $brand_id_arry = explode(",", $brand_id);
+            $return = $return->whereIn('product.brand_id', $brand_id_arry);
+        }
+        if (!empty($request->get('color_id'))) {
+            $color_id = rtrim($request->get('color_id'), ',');
+            $color_id_arry = explode(",", $color_id);
+            $return = $return->join('product_color', 'product_color.product_id', '=', 'product.id');
+            $return = $return->whereIn('product_color.color_id', $color_id_arry);
+        }
         $return = $return->where('product.is_delete', '=', 0)
             ->where('product.status', '=', 0)
+            /* ->groupBy('product.id') */
             ->orderBy('product.id', 'desc')
             ->paginate(20);
         return $return;

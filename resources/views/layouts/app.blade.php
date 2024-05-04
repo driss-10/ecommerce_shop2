@@ -44,7 +44,7 @@
 
                 @guest
                 <a href="/Login">Sign in</a>
-                 @endguest
+                @endguest
                 <a href="#">FAQs</a>
             </div>
             <div class="offcanvas__top__hover">
@@ -129,10 +129,22 @@
 
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="/Contact">Contacts</a></li>
+                            @php
+                            $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
-                        </ul>
+                            @endphp
+                            <li><a href="#">Categories</a>
+                                <ul class="dropdown">
+
+                                    @foreach ($getCategoryHeader as $value)
+
+                                    <li><a href="{{url('/List/'.$value->slug  )}}">{{$value->name}}</a></li>
+                                    @endforeach
+
+                                    
+
+                                </ul>
+                                <li><a href="/Contact">Contacts</a></li>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
@@ -153,7 +165,7 @@
                         @endauth
 
 
-                        <div class="price"></div>
+                       <!--  <div class="price"></div> -->
 
 
 

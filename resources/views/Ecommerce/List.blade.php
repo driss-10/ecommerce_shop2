@@ -43,10 +43,13 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="" id="FilterForm">
+                        <form action="" id="FilterForm" method="post">
                             {{csrf_field()}}
                             <input type="text" placeholder="Search...">
                             <button type="submit"><span class="icon_search"></span></button>
+                            <input type="text" name="sub_category_id" id="get_category_id">
+                            <input type="text" name="brand_id" id="get_brand_id">
+                            <input type="text" name="color_id" id="get_color_id">
                         </form>
                     </div>
                     <div class="shop__sidebar__accordion">
@@ -61,13 +64,23 @@
                                         $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
                                         @endphp
-                                        <div class="shop__sidebar__categories">
-                                            <ul class="nice-scroll">
-                                                @foreach ($getCategoryHeader as $value)
+                                        <div class="pp">
 
-                                                <li><a href="{{url('/List/'.$value->slug  )}}">{{$value->name}}</a></li>
-                                                @endforeach
+
+                                            @foreach ($getSubCategoryFillter as $c_value )
+
+                                            <ul class="form-check">
+
+
+                                                <input class="form-check-input ChangeCategory" type="checkbox" value="{{$c_value->id}}" id='{{$c_value->id}}' value='{{$c_value->id}}'>
+                                                <label class="form-check-label " for="{{$c_value->id}}">
+
+                                                    {{$c_value->name}}<span>({{$c_value->TotalProduct()}})</span>
+                                                </label>
                                             </ul>
+
+
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -80,14 +93,14 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="shop__sidebar__brand">
+                                        <div class="shop__sidebar__brand pp">
                                             @foreach ($getBrand as $B_value )
-                                            
-                                                <ul class="form-check" style="padding-left: 10px">
+
+                                            <ul class="form-check">
 
 
-                                                <input class="form-check-input ChangeBrand" type="checkbox" id='brand-{{$B_value->id}}' value='{{$B_value->id}}'>
-                                                <label class="form-check-label ChangeBrand" for="brand-{{$B_value->id}}">
+                                                <input class="form-check-input ChangeBrand" type="checkbox" id='{{$B_value->id}}' value='{{$B_value->id}}'>
+                                                <label class="form-check-label ">
                                                     {{$B_value->name}}
                                                 </label>
                                             </ul>
@@ -213,67 +226,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    @foreach ($getProduct as $value)
-                    @php
-                    $getProductImages =$value->getImageSingle($value->id)
-                    @endphp
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            @if (!empty($getProductImages) && !empty($getProductImages->getLogo()))
-                            <div class="product__item__pic set-bg" data-setbg="{{$getProductImages->getLogo()}}">
-
-                                @endif
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
-
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6>{{$value->sub_category_name}}</h6>
-                                <a href="{{url($value->slug)}}">
-                                    <h6>{{$value->title}}</h6>
-                                </a>
-
-                                <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5>${{number_format($value->price,2)}}</h5>
-                                <div class="product__color__select">
-                                    <label for="pc-4">
-                                        <input type="radio" id="pc-4">
-                                    </label>
-                                    <label class="active black" for="pc-5">
-                                        <input type="radio" id="pc-5">
-                                    </label>
-                                    <label class="grey" for="pc-6">
-                                        <input type="radio" id="pc-6">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="">
-                            {!! $getProduct->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-
-                        </div>
-                    </div>
-                </div>
-
+            <div id="getProductAjax">
+                @include('Ecommerce._List')
+            </div>
 
             </div>
         </div>
     </div>
     <script>
+        $('.ChangeCategory').change(function() {
+            var ids = '';
+            $('.ChangeCategory').each(function() {
+                if (this.checked) {
+                    var id = $(this).val();
+                    ids += id + ',';
+                }
+            });
+            $('#get_category_id').val(ids);
+            FilterForm();
+
+
+        });
         $('.ChangeBrand').change(function() {
             var ids = '';
             $('.ChangeBrand').each(function() {
@@ -314,16 +287,16 @@
 
         function FilterForm() {
             $.ajax({
-                type: "get", // Use POST method
-                url: "{{ route('getPoductAjax') }}",
+                type: "POST", // Use POST method
+                url: "{{ url('get_Poduct_Ajax') }}",
                 data: $('#FilterForm').serialize(),
                 dataType: "json",
                 success: function(data) {
-                    // Handle success response
+                    $('#getProductAjax').html(data.success)
                 },
-                error: function(xhr, status, error) {
+                error: function(data) {
                     // Handle error response
-                    console.error(error);
+
                 }
             });
 

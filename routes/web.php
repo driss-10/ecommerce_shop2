@@ -96,7 +96,7 @@ Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 /* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
 Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
 Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
-Route::get('getPoductAjax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
+Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
@@ -119,6 +119,5 @@ Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
 
 
-Route::post('/Contact', [ContactController::class, 'send'])->name('contact.send');
-Route::get('/Contact', [ContactController::class, 'Contact']);
+Route::get('/Contact', [ContactController::class, 'send'])->name('contact.send');
 Route::get('admin/message/list', [MessageController::class, 'ShowMessage']);
