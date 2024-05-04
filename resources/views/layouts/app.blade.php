@@ -17,7 +17,7 @@
     <link href="{{url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap')}}" rel="stylesheet">
 
     <!-- Css Styles -->
-    
+
     <link rel="stylesheet" href="{{url('https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('https://unpkg.com/bs-brain@2.0.3/components/logins/login-4/assets/css/login-4.css')}}">
     <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
@@ -86,7 +86,7 @@
                             <div class="header__top__links">
 
                                 @guest
-                                <a  href="/Login">Sign in</a>
+                                <a href="/Login">Sign in</a>
 
                                 @endguest
                                 <a href="#">FAQs</a>
@@ -141,37 +141,35 @@
                                     <li><a href="{{url('/List/'.$value->slug  )}}">{{$value->name}}</a></li>
                                     @endforeach
 
-                                    
+
 
                                 </ul>
-                                <li><a href="/Contact">Contacts</a></li>
+                            <li><a href="/Contact">Contacts</a></li>
                     </nav>
                 </div>
+             <!--   desktop -->
                 <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
-                        <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
-                        <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-
-
-                        @auth
-                        <form action="{{ route('logout') }}" method="POST">
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        <div class="header__nav__option">
+                            <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
+                            <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
+                            <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
                             @csrf
-                            <button class="btn btn-primary btn-sm" type="submit">Logout</button>
                             <a href="/profile">
                                 <img src="img/icon/user.png" width="18px" alt="">
                             </a>
-                        </form>
-                        @endauth
+                            <button class="btn btn-primary btn-sm" type="submit">Logout</button>
+                            
 
-
-                       <!--  <div class="price"></div> -->
-
-
-
-
-                    </div>
+                            <!--  <div class="price"></div> -->
+                        </div>
+                        
+                    </form>
+                    @endauth
                 </div>
+
+
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>

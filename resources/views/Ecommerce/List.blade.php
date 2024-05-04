@@ -60,10 +60,10 @@
                                 </div>
                                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        @php
+                                     <!--    @php
                                         $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
-                                        @endphp
+                                        @endphp -->
                                         <div class="pp">
 
 

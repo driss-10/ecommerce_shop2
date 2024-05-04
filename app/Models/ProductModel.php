@@ -30,6 +30,7 @@ class ProductModel extends Model
             ->orderBy('product.id', 'desc')
             ->paginate(20);
     }
+
     static public function getProduct($category_id = '', $subcategory_id = '')
     {
         $request = app('request');
