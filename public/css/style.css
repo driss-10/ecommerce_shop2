@@ -85,9 +85,11 @@ p {
 img {
 	max-width: 100%;
 }
+
 .pp {
 	margin-left: 8px;
 }
+
 input:focus,
 select:focus,
 button:focus,
@@ -1254,7 +1256,7 @@ footer .hero__social a:hover {
 
 .shop__sidebar__categories ul li a,
 .shop__sidebar__price ul li a,
-.shop__sidebar__brand ul  input {
+.shop__sidebar__brand ul input {
 	color: #b7b7b7;
 	font-size: 15px;
 	line-height: 32px;
@@ -1265,7 +1267,7 @@ footer .hero__social a:hover {
 
 .shop__sidebar__categories ul li a:hover,
 .shop__sidebar__price ul li a:hover,
-.shop__sidebar__brand ul  input:hover {
+.shop__sidebar__brand ul input:hover {
 	color: #111111;
 }
 
@@ -3640,6 +3642,20 @@ footer .hero__social a:hover {
 		display: inline-block;
 		margin-right: 26px;
 		position: relative;
+	}
+
+	.filter-price {
+		padding-top: .2rem;
+		padding-bottom: 3rem
+	}
+
+	.filter-price-text {
+		margin-bottom: 2rem;
+		letter-spacing: -.01em
+	}
+
+	#filter-price-range {
+		color: #c96
 	}
 
 	.offcanvas__nav__option a span {

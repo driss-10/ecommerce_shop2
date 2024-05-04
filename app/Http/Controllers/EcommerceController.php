@@ -29,9 +29,9 @@ class EcommerceController extends Controller
 
 
         if (!empty($getCategory) && !empty($getSubCategory)) {
-            $data['Meta_title'] = $getSubCategory->Meta_title;
-            $data['Meta_Description'] = $getSubCategory->Meta_Description;
-            $data['Meta_Keywords'] = $getSubCategory->Meta_Keywords;
+            $data['meta_title'] = $getSubCategory->meta_title;
+            $data['meta_Description'] = $getSubCategory->meta_Description;
+            $data['meta_Keywords'] = $getSubCategory->meta_Keywords;
 
 
             $data['getSubCategory'] = $getSubCategory;
@@ -50,9 +50,9 @@ class EcommerceController extends Controller
 
             $data['getCategory'] = $getCategory;
 
-            $data['Meta_title'] = $getCategory->Meta_title;
-            $data['Meta_Description'] = $getCategory->Meta_Description;
-            $data['Meta_Keywords'] = $getCategory->Meta_Keywords;
+            $data['meta_title'] = $getCategory->meta_title;
+            $data['meta_Description'] = $getCategory->meta_Description;
+            $data['meta_Keywords'] = $getCategory->meta_Keywords;
 
             $data['getProduct'] = ProductModel::getProduct($getCategory->id);
 

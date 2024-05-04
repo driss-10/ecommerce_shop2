@@ -6,10 +6,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> @yield('title') {{!empty($Meta_title)? $Meta_title : ''}} </title>
+    <title> @yield('title') {{!empty($meta_title)? $meta_title : ''}} </title>
 
-    @if (!empty($Meta_Keywords))
-    <meta name="Keywords" content="{{$Meta_Keywords}}" @endif @if (!empty($Meta_Description)) <meta name="Description" content="{{$Meta_Description}}">
+    @if (!empty($meta_Keywords))
+    <meta name="Keywords" content="{{$meta_Keywords}}" @endif @if (!empty($meta_Description)) <meta name="Description" content="{{$meta_Description}}">
     @endif
 
     <!-- Google Font -->
@@ -147,7 +147,7 @@
                             <li><a href="/Contact">Contacts</a></li>
                     </nav>
                 </div>
-             <!--   desktop -->
+                <!--   desktop -->
                 <div class="col-lg-3 col-md-3">
                     @auth
                     <form action="{{ route('logout') }}" method="POST">
@@ -160,11 +160,11 @@
                                 <img src="img/icon/user.png" width="18px" alt="">
                             </a>
                             <button class="btn btn-primary btn-sm" type="submit">Logout</button>
-                            
+
 
                             <!--  <div class="price"></div> -->
                         </div>
-                        
+
                     </form>
                     @endauth
                 </div>
@@ -273,6 +273,9 @@
     <script src="{{url('')}}/js/mixitup.min.js"></script>
     <script src="{{url('')}}/js/owl.carousel.min.js"></script>
     <script src="{{url('')}}/js/main.js"></script>
+    <script src="{{url('')}}/js/wNumb.js"></script>
+    <script src="{{url('')}}/js/bootstrap-input-spinner.js"></script>
+    <script src="{{url('')}}/js/nouislider.min.js"></script>
 
     <!--  <script src="assets\tinymce\jQuery.js"></script> -->
 

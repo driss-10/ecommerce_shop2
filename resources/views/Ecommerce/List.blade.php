@@ -60,7 +60,7 @@
                                 </div>
                                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                     <!--    @php
+                                        <!--    @php
                                         $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
                                         @endphp -->
@@ -118,15 +118,17 @@
                                 </div>
                                 <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
-                                        <div class="shop__sidebar__price">
-                                            <ul>
-                                                <li><a href="#">$0.00 - $50.00</a></li>
-                                                <li><a href="#">$50.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $150.00</a></li>
-                                                <li><a href="#">$150.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $250.00</a></li>
-                                                <li><a href="#">250.00+</a></li>
-                                            </ul>
+                                        <div class="collapse show" id="widget-5">
+                                            <div class="widget-body">
+                                                <div class="filter-price">
+                                                    <div class="filter-price-text">
+                                                        Price Range:
+                                                        <span id="filter-price-range"></span>
+                                                    </div><!-- End .filter-price-text -->
+
+                                                    <div id="price-slider"></div><!-- End #price-slider -->
+                                                </div><!-- End .filter-price -->
+                                            </div><!-- End .widget-body -->
                                         </div>
                                     </div>
                                 </div>
@@ -224,11 +226,12 @@
                                 </select>
                             </div>
                         </div>
+
                     </div>
                 </div>
-            <div id="getProductAjax">
-                @include('Ecommerce._List')
-            </div>
+                <div id="getProductAjax">
+                    @include('Ecommerce._List')
+                </div>
 
             </div>
         </div>
@@ -301,9 +304,34 @@
             });
 
         }
+        if (typeof noUiSlider === 'object') {
+            var priceSlider = document.getElementById('price-slider');
+            noUiSlider.create(priceSlider, {
+                start: [0, 750],
+                connect: true,
+                step: 50,
+                margin: 200,
+                range: {
+                    'min': 0,
+                    'max': 1000
+                },
+                tooltips: true,
+                format: wNumb({
+                    decimals: 0,
+                    prefix: '$'
+                })
+            });
+
+            // Update Price Range
+            priceSlider.noUiSlider.on('update', function(values, handle) {
+                $('#filter-price-range').text(values.join(' - '));
+            });
+        }
     </script>
 
-
+    <script src="{{url('')}}/tt/wNumb.js"></script>
+    <script src="{{url('')}}/tt/bootstrap-input-spinner.js"></script>
+    <script src="{{url('')}}/tt/nouislider.min.js"></script>
 
 </section>
 <!-- Shop Section End -->

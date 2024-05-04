@@ -9,21 +9,23 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function index(){
-         if (!auth()->check()) {
-             return redirect()->route('Login');
+    public function index()
+    {
+        if (!auth()->check()) {
+            return redirect()->route('Login');
         }
-         $user = Auth::user();
-        return view('Profile.profile',compact('user'));
+        $user = Auth::user();
+        return view('Profile.profile', compact('user'));
     }
-    
-    
-    public function edit(){
+
+
+    public function edit()
+    {
         if (!auth()->check()) {
             return redirect('Login');
         }
         $user = Auth::user();
-        return view('profile.edit',compact('user'));
+        return view('profile.edit', compact('user'));
     }
     public function update(Request $request)
     {
@@ -59,5 +61,4 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
-
 }
