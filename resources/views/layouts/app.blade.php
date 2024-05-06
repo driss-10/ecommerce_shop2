@@ -17,6 +17,9 @@
     <link href="{{url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap')}}" rel="stylesheet">
 
     <!-- Css Styles -->
+    <script src="{{url('')}}/tt/wNumb.js"></script>
+    <script src="{{url('')}}/tt/bootstrap-input-spinner.js"></script>
+    <script src="{{url('')}}/tt/nouislider.min.js"></script>
 
     <link rel="stylesheet" href="{{url('https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('https://unpkg.com/bs-brain@2.0.3/components/logins/login-4/assets/css/login-4.css')}}">
@@ -149,24 +152,29 @@
                 </div>
                 <!--   desktop -->
                 <div class="col-lg-3 col-md-3">
-                    @auth
-                    <form action="{{ route('logout') }}" method="POST">
-                        <div class="header__nav__option">
+
+                    <div class="header__nav__option">
+                        @auth
+                        <form action="{{ route('logout') }}" method="POST">
                             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
-                            <a href=""><img src="{{url('')}}//img/icon/heart.png" alt=""></a>
+
                             <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+
                             @csrf
+
                             <a href="/profile">
                                 <img src="img/icon/user.png" width="18px" alt="">
                             </a>
                             <button class="btn btn-primary btn-sm" type="submit">Logout</button>
 
 
-                            <!--  <div class="price"></div> -->
-                        </div>
+                        </form>
+                        @endauth
+                        <!--  <div class="price"></div> -->
+                    </div>
 
-                    </form>
-                    @endauth
+
+
                 </div>
 
 
@@ -276,6 +284,8 @@
     <script src="{{url('')}}/js/wNumb.js"></script>
     <script src="{{url('')}}/js/bootstrap-input-spinner.js"></script>
     <script src="{{url('')}}/js/nouislider.min.js"></script>
+
+
 
     <!--  <script src="assets\tinymce\jQuery.js"></script> -->
 

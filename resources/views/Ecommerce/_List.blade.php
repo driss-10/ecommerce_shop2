@@ -16,8 +16,11 @@
                     </ul>
                 </div>
                 <div class="product__item__text">
-                    <h6>{{$value->sub_category_name}}</h6>
-                    <a href="{{url($value->slug)}}">
+                    <a  href="{{url($value->category_slug. '/' .$value->sub_category_slug)}}">
+                        <h5 >{{$value->sub_category_name}}</h5>
+                    </a>
+
+                    <a  href="{{url($value->slug)}}">
                         <h6>{{$value->title}}</h6>
                     </a>
                     <div class="rating">
@@ -44,11 +47,6 @@
         </div>
         @endforeach
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="">
-                {!! $getProduct->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-            </div>
-        </div>
-    </div>
+
+</div>
 </div>

@@ -74,7 +74,7 @@ class ProductModel extends Model
             ->where('product.status', '=', 0)
             /* ->groupBy('product.id') */
             ->orderBy('product.id', 'desc')
-            ->paginate(20);
+            ->paginate(2);
         return $return;
     }
 
@@ -83,6 +83,15 @@ class ProductModel extends Model
     {
         return ProductImageModel::where('product_id', '=', $product_id)->first();
     }
+    static function getSingleSlug($slug)
+    {
+        return self::where('slug', '=', $slug)
+        ->where('product.is_delete', '=', 0)
+        ->where('product.status', '=', 0)
+        ->first();
+    }
+
+
 
     public function getColor()
     {

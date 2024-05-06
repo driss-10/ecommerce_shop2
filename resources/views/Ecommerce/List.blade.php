@@ -4,6 +4,8 @@
 
 @section('content')
 <!-- Breadcrumb Section Begin -->
+<link rel="stylesheet" href="{{url('')}}/tt/nouislider.min.css">
+<script src="{{url('')}}/tt/main.js"></script>
 
 <section class="breadcrumb-option">
     <div class="container">
@@ -42,6 +44,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="shop__sidebar">
+
                     <div class="shop__sidebar__search">
                         <form action="" id="FilterForm" method="post">
                             {{csrf_field()}}
@@ -112,7 +115,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <!--              <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
                                 </div>
@@ -124,15 +127,15 @@
                                                     <div class="filter-price-text">
                                                         Price Range:
                                                         <span id="filter-price-range"></span>
-                                                    </div><!-- End .filter-price-text -->
+                                                    </div>
 
-                                                    <div id="price-slider"></div><!-- End #price-slider -->
-                                                </div><!-- End .filter-price -->
-                                            </div><!-- End .widget-body -->
+                                                    <div id="price-slider"></div>
+                                                </div>
+                                            </div><
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseFour">Size</a>
@@ -186,7 +189,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <!--  <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
                                 </div>
@@ -203,7 +206,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -231,107 +234,117 @@
                 </div>
                 <div id="getProductAjax">
                     @include('Ecommerce._List')
-                </div>
+                    <div class="row">
+                        <div class="col-lg-12">
 
+
+                            <div style=" display: flex;justify-content: center;align-items: center;">
+                                {{$getProduct->links() }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        $('.ChangeCategory').change(function() {
-            var ids = '';
-            $('.ChangeCategory').each(function() {
-                if (this.checked) {
-                    var id = $(this).val();
-                    ids += id + ',';
-                }
+        <script>
+            $('.ChangeCategory').change(function() {
+                var ids = '';
+                $('.ChangeCategory').each(function() {
+                    if (this.checked) {
+                        var id = $(this).val();
+                        ids += id + ',';
+                    }
+                });
+                $('#get_category_id').val(ids);
+                FilterForm();
+
+
             });
-            $('#get_category_id').val(ids);
-            FilterForm();
+            $('.ChangeBrand').change(function() {
+                var ids = '';
+                $('.ChangeBrand').each(function() {
+                    if (this.checked) {
+                        var id = $(this).val();
+                        ids += id + ',';
+                    }
+                });
+                $('#get_brand_id').val(ids);
+                FilterForm();
 
 
-        });
-        $('.ChangeBrand').change(function() {
-            var ids = '';
-            $('.ChangeBrand').each(function() {
-                if (this.checked) {
-                    var id = $(this).val();
-                    ids += id + ',';
-                }
             });
-            $('#get_brand_id').val(ids);
-            FilterForm();
 
-
-        });
-
-        $('.ChangeColor').click(function() {
-            var id = $(this).attr('id');
-            var status = $(this).attr('data-val');
-            if (status == 0) {
-                $(this).attr('data-val', 1);
-                $(this).addClass('active-color');
-            } else {
-                $(this).attr('data-val', 0);
-                $(this).removeClass('active-color');
-            }
-            var ids = '';
-            $('.ChangeColor').each(function() {
+            $('.ChangeColor').click(function() {
+                var id = $(this).attr('id');
                 var status = $(this).attr('data-val');
-                if (status == 1) {
-                    var id = $(this).attr('id');
-                    ids += id + ',';
+                if (status == 0) {
+                    $(this).attr('data-val', 1);
+                    $(this).addClass('active-color');
+                } else {
+                    $(this).attr('data-val', 0);
+                    $(this).removeClass('active-color');
                 }
+                var ids = '';
+                $('.ChangeColor').each(function() {
+                    var status = $(this).attr('data-val');
+                    if (status == 1) {
+                        var id = $(this).attr('id');
+                        ids += id + ',';
+                    }
+                });
+                console.log(ids);
+                $('#get_color_id').val(ids);
+                FilterForm();
+
             });
-            console.log(ids);
-            $('#get_color_id').val(ids);
-            FilterForm();
+            var xhr;
 
-        });
-
-        function FilterForm() {
-            $.ajax({
-                type: "POST", // Use POST method
-                url: "{{ url('get_Poduct_Ajax') }}",
-                data: $('#FilterForm').serialize(),
-                dataType: "json",
-                success: function(data) {
-                    $('#getProductAjax').html(data.success)
-                },
-                error: function(data) {
-                    // Handle error response
+            function FilterForm() {
+                if (xhr && xhr.readyState != 1) {
+                    xhr.abort();
 
                 }
-            });
+                xhr = $.ajax({
+                    type: "POST", // Use POST method
+                    url: "{{ url('get_Poduct_Ajax') }}",
+                    data: $('#FilterForm').serialize(),
+                    dataType: "json",
+                    success: function(data) {
+                        $('#getProductAjax').html(data.success)
+                    },
+                    error: function(data) {
+                        // Handle error response
 
-        }
-        if (typeof noUiSlider === 'object') {
-            var priceSlider = document.getElementById('price-slider');
-            noUiSlider.create(priceSlider, {
-                start: [0, 750],
-                connect: true,
-                step: 50,
-                margin: 200,
-                range: {
-                    'min': 0,
-                    'max': 1000
-                },
-                tooltips: true,
-                format: wNumb({
-                    decimals: 0,
-                    prefix: '$'
-                })
-            });
+                    }
+                });
 
-            // Update Price Range
-            priceSlider.noUiSlider.on('update', function(values, handle) {
-                $('#filter-price-range').text(values.join(' - '));
-            });
-        }
-    </script>
+            }
+            /*  if (typeof noUiSlider === 'object') {
+                 var priceSlider = document.getElementById('price-slider');
+                 noUiSlider.create(priceSlider, {
+                     start: [0, 750],
+                     connect: true,
+                     step: 50,
+                     margin: 200,
+                     range: {
+                         'min': 0,
+                         'max': 1000
+                     },
+                     tooltips: true,
+                     format: wNumb({
+                         decimals: 0,
+                         prefix: '$'
+                     })
+                 });
 
-    <script src="{{url('')}}/tt/wNumb.js"></script>
-    <script src="{{url('')}}/tt/bootstrap-input-spinner.js"></script>
-    <script src="{{url('')}}/tt/nouislider.min.js"></script>
+                 // Update Price Range
+                 priceSlider.noUiSlider.on('update', function(values, handle) {
+                     $('#filter-price-range').text(values.join(' - '));
+                 });
+             } */
+        </script>
+
 
 </section>
 <!-- Shop Section End -->

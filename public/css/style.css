@@ -1062,7 +1062,13 @@ footer .hero__social a:hover {
 .product__item__text {
 	padding-top: 25px;
 	position: relative;
+	margin-top: 20px;
 }
+.product__item__text a h5 {
+	
+	
+    margin-top: -24px;
+} 
 
 .product__item__text a {
 	font-size: 15px;
@@ -3646,7 +3652,8 @@ footer .hero__social a:hover {
 
 	.filter-price {
 		padding-top: .2rem;
-		padding-bottom: 3rem
+		padding-bottom: 3rem;
+		margin-left: 6px;
 	}
 
 	.filter-price-text {

@@ -22,13 +22,28 @@ class EcommerceController extends Controller
     }
     public function list($slug = '', $subslug = '')
     {
+
+        $getProductSingle = ProductModel::getSingleSlug($slug);
+
+
+
         $getCategory = CategoryModel::getSingleSlug($slug);
         $getSubCategory = SubCategoryModel::getSingleSlug($subslug);
         $data['getColor'] = ColorModel::getRecordActive();
         $data['getBrand'] = BrandModel::getRecordActive();
 
+        if (!empty($getProductSingle)) {
+            $data['meta_title'] = $getProductSingle->title;
+            $data['meta_Description'] = $getProductSingle->meta_Description;
+      
+            $data['getProduct'] = $getProductSingle;
 
-        if (!empty($getCategory) && !empty($getSubCategory)) {
+            return view('Ecommerce.ShopDetails', $data);
+
+
+        }
+        
+        else if (!empty($getCategory) && !empty($getSubCategory)) {
             $data['meta_title'] = $getSubCategory->meta_title;
             $data['meta_Description'] = $getSubCategory->meta_Description;
             $data['meta_Keywords'] = $getSubCategory->meta_Keywords;
@@ -37,15 +52,15 @@ class EcommerceController extends Controller
             $data['getSubCategory'] = $getSubCategory;
             $data['getCategory'] = $getCategory;
             //afficher product
-            
-            $data['getProduct'] = ProductModel::getProduct($getCategory->id,$getSubCategory->id);
+
+            $data['getProduct'] = ProductModel::getProduct($getCategory->id, $getSubCategory->id);
 
             $data['getSubCategoryFillter']  = SubCategoryModel::getRecordSubCategory($getCategory->id);
             return view('Ecommerce.List', $data);
         }
 
         if (!empty($getCategory)) {
-          
+
             $data['getSubCategoryFillter']  = SubCategoryModel::getRecordSubCategory($getCategory->id);
 
             $data['getCategory'] = $getCategory;
@@ -92,11 +107,11 @@ class EcommerceController extends Controller
     {
         return view('Ecommerce.CheckOut');
     }
-    public function ShopDetails()
+ /*    public function ShopDetails()
     {
         if (!auth()->check()) {
             return redirect()->route('Login');
         }
         return view('Ecommerce.ShopDetails');
-    }
+    } */
 }
