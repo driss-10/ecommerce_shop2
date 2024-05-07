@@ -101,7 +101,8 @@ Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name(
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 
-//Route::get('/ShopDetails', [EcommerceController::class, 'ShopDetails'])->name('ShopDetails');
+Route::get('/ShopDetails/{slug?}', [EcommerceController::class, 'ShopDetails'])->name('Ecommerce.ShopDetails');
+
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
 Route::post('/logout', [EcommerceAuthController::class, 'logout'])->name('logout');

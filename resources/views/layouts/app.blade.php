@@ -122,17 +122,8 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
-                            <li><a href="{{route('Shop')}}">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="/About">About Us</a></li>
-                                    <li><a href="/ShopDetails">Shop Details</a></li>
-                                    <li><a href="/ShoppingCart">Shopping Cart</a></li>
-                                    <li><a href="/CheckOut">Check Out</a></li>
-
-                                </ul>
-                            </li>
-                            @php
+                           <!--  <li><a href="{{route('Shop')}}">Shop</a></li> -->
+                           @php
                             $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
                             @endphp
@@ -147,6 +138,16 @@
 
 
                                 </ul>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="/About">About Us</a></li>
+                                    <li><a href="/ShopDetails">Shop Details</a></li>
+                                    <li><a href="/ShoppingCart">Shopping Cart</a></li>
+                                    <li><a href="/CheckOut">Check Out</a></li>
+
+                                </ul>
+                            </li>
+                          
                             <li><a href="/Contact">Contacts</a></li>
                     </nav>
                 </div>

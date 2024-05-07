@@ -23,7 +23,7 @@
                         <a href="/">Home</a>
                         <a href="/Shop">Shop</a>
                         @if (!empty($getSubCategory))
-                        <span><a href="{{url($getCategory->slug)}}">{{$getCategory->name}}</a></span>
+                        <span><a href="{{url($getCategory->Category_id)}}">{{$getCategory->name}}</a></span>
                         <span>{{$getSubCategory->name}}</span>
                         @else
                         <span>{{$getCategory->name}}</span>
@@ -50,9 +50,9 @@
                             {{csrf_field()}}
                             <input type="text" placeholder="Search...">
                             <button type="submit"><span class="icon_search"></span></button>
-                            <input type="text" name="sub_category_id" id="get_category_id">
+                            <!-- <input type="text" name="sub_category_id" id="get_category_id">
                             <input type="text" name="brand_id" id="get_brand_id">
-                            <input type="text" name="color_id" id="get_color_id">
+                            <input type="text" name="color_id" id="get_color_id"> -->
                         </form>
                     </div>
                     <div class="shop__sidebar__accordion">

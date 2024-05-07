@@ -114,4 +114,22 @@ class EcommerceController extends Controller
         }
         return view('Ecommerce.ShopDetails');
     } */
+    public function ShopDetails($slug='')
+{
+    // Fetch the product details based on the slug
+    $product = ProductModel::getSingleSlug($slug);
+
+    if (!$product) {
+        abort(404); // Product not found
+    }
+
+    // Add other necessary data for the view
+    $data['meta_title'] = $product->title;
+    $data['meta_Description'] = $product->meta_Description;
+    $data['getProduct'] = $product;
+
+    // Return the view with the data
+    return view('Ecommerce.ShopDetails', $data);
+}
+
 }
