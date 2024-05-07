@@ -95,13 +95,13 @@ Route::group(['midlleware' => 'admin'], function () {
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 /* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
 Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
-Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
+Route::get('{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
 Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 
-Route::get('/ShopDetails/{slug?}', [EcommerceController::class, 'ShopDetails'])->name('Ecommerce.ShopDetails');
+//Route::get('/ShopDetails/{slug?}/{subslug?}', [EcommerceController::class, 'ShopDetails'])->name('Ecommerce.ShopDetails');
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');

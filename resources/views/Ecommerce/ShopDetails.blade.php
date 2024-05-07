@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title' , 'About Us')
+@section('title' , '')
 
 @section('content')
 
@@ -12,7 +12,9 @@
                 <div class="col-lg-12">
                     <div class="product__details__breadcrumb">
                         <a href="/">Home</a>
-                        <a href="/Shop">Shop</a>
+                       
+    <a href="{{ url($getProduct->getCategory->slug) }}">{{ $getProduct->getCategory->name }}</a>
+
                         <span>Product Details</span>
                     </div>
                 </div>
@@ -67,7 +69,7 @@
                         <div class="tab-pane" id="tabs-4" role="tabpanel">
                             <div class="product__details__pic__item">
                                 <img src="{{url('')}}/img/shop-details/product-big-4.png" alt="">
-                                <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                
                             </div>
                         </div>
                     </div>

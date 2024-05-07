@@ -20,7 +20,7 @@
                         <h5>{{$value->sub_category_name}}</h5>
                     </a>
 
-                    <a href="{{route('Ecommerce.ShopDetails',$value->slug)}}">
+                    <a href="{{url($value->slug)}}">
                         <h6>{{$value->title}}</h6>
                     </a>
                     <div class="rating">

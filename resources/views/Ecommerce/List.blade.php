@@ -49,10 +49,10 @@
                         <form action="" id="FilterForm" method="post">
                             {{csrf_field()}}
                             <input type="text" placeholder="Search...">
-                            <button type="submit"><span class="icon_search"></span></button>
-                            <!-- <input type="text" name="sub_category_id" id="get_category_id">
+                            <button type="submit"><span class="icon_search"></span></button> 
+                            <div><input type="text" name="sub_category_id" id="get_category_id">
                             <input type="text" name="brand_id" id="get_brand_id">
-                            <input type="text" name="color_id" id="get_color_id"> -->
+                            <input type="text" name="color_id" id="get_color_id"></div>
                         </form>
                     </div>
                     <div class="shop__sidebar__accordion">
