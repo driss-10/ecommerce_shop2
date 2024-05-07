@@ -22,7 +22,7 @@ class EcommerceController extends Controller
     }
     public function list($slug = '', $subslug = '')
     {
-        dd($slug);
+      /*   dd($slug); */
 
         $getProductSingle = ProductModel::getSingleSlug($slug);
 
@@ -34,7 +34,7 @@ class EcommerceController extends Controller
         $data['getBrand'] = BrandModel::getRecordActive();
 
         if (!empty($getProductSingle)) {
-            dd($getProductSingle);
+           /*  dd($getProductSingle); */
             $data['meta_title'] = $getProductSingle->title;
             $data['meta_Description'] = $getProductSingle->meta_Description;
             $data['getProduct'] = $getProductSingle;
