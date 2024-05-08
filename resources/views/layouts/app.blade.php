@@ -132,7 +132,7 @@
 
                                     @foreach ($getCategoryHeader as $value)
 
-                                    <li><a href="{{url($value->slug  )}}">{{$value->name}}</a></li>
+                                    <li><a href="{{url('/List/'.$value->slug  )}}">{{$value->name}}</a></li>
                                     @endforeach
 
 

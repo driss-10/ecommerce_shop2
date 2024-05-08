@@ -79,7 +79,7 @@ class ProductModel extends Model
             ->where('product.status', '=', 0)
             /* ->groupBy('product.id') */
             ->orderBy('product.id', 'desc')
-            ->paginate(30);
+            ->paginate(2);
         return $return;
     }
 
@@ -139,13 +139,12 @@ class ProductModel extends Model
     {
         return $this->hasMany(ProductImageModel::class, "product_id")->orderBy('order_By', 'desc');
     }
-
+    public function getCategory()
+    {
+        return $this->belongsTo(CategoryModel::class, "Category_id");
+    }
     public function getSubcategory()
     {
         return $this->belongsTo(SubCategoryModel::class, 'sub_category_id');
-    }
-    public function getCategory()
-    {
-        return $this->belongsTo(CategoryModel::class, 'category_id');
     }
 }

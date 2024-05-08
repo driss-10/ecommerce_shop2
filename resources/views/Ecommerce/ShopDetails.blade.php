@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title' , '')
+@section('title' , 'About Us')
 
 @section('content')
 
@@ -12,6 +12,9 @@
                 <div class="col-lg-12">
                     <div class="product__details__breadcrumb">
                         <a href="/">Home</a>
+                       
+    <a href="{{ url($getProduct->getCategory->slug) }}">{{ $getProduct->getCategory->name }}</a>
+
                         <span>Product Details</span>
                     </div>
                 </div>
@@ -43,9 +46,23 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             @if (!empty($getProductImages) && !empty($getProductImages->getLogo()))
                             <div class="product__details__pic__item">
-
-                                <img src="{{$getProductImages->getLogo()}}" alt="">
-
+                                <img src="{{url('')}}/img/shop-details/product-big-2.png" alt="">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="{{url('')}}/img/shop-details/product-big-3.png" alt="">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-3" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="{{url('')}}/img/shop-details/product-big.png" alt="">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-4" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="{{url('')}}/img/shop-details/product-big-4.png" alt="">
+                                
                             </div>
                             @endif
                         </div>

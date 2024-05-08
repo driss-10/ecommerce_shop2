@@ -50,7 +50,7 @@ class EcommerceController extends Controller
     }
     public function list($slug = '', $subslug = '')
     {
-       
+      /*   dd($slug); */
 
         $getProductSingle = ProductModel::getSingleSlug($slug);
     
@@ -63,10 +63,9 @@ class EcommerceController extends Controller
         $data['getBrand'] = BrandModel::getRecordActive();
 
         if (!empty($getProductSingle)) {
-            
-        
-          
+           /*  dd($getProductSingle); */
             $data['meta_title'] = $getProductSingle->title;
+            $data['meta_Description'] = $getProductSingle->meta_Description;
             $data['getProduct'] = $getProductSingle;
             $data['getRelatedProduct'] = ProductModel::getRelatedProduct($getProductSingle->id,$getProductSingle->sub_category_id);
 
@@ -111,7 +110,8 @@ class EcommerceController extends Controller
             abort(404);
         }
     }
- 
+
+
     public function getPoductAjax(Request $request)
     {
         $getProduct = ProductModel::getProduct();
@@ -147,6 +147,22 @@ class EcommerceController extends Controller
         }
         return view('Ecommerce.ShopDetails');
     } */
-    
+    public function ShopDetails($slug='',$subslug = '')
+{
+    // Fetch the product details based on the slug
+    $product = ProductModel::getSingleSlug($slug);
+
+    if (!$product) {
+        abort(404); // Product not found
+    }
+
+    // Add other necessary data for the view
+    $data['meta_title'] = $product->title;
+    $data['meta_Description'] = $product->meta_Description;
+    $data['getProduct'] = $product;
+
+    // Return the view with the data
+    return view('Ecommerce.ShopDetails', $data);
+}
 
 }
