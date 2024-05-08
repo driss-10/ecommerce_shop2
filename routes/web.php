@@ -106,7 +106,8 @@ Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOu
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
 Route::post('/logout', [EcommerceAuthController::class, 'logout'])->name('logout');
-
+Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');
+Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -116,8 +117,7 @@ Route::put('/profile/update', [ProfileController::class, 'update'])->name('profi
 
 
 
-Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');
-Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
+
 
 
 Route::get('/Contact', [ContactController::class, 'send'])->name('contact.send');

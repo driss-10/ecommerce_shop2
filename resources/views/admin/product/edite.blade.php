@@ -124,10 +124,10 @@
                                                         @foreach ($product->getSize as $size)
                                                             <tr id="DeleteSize{{$i_s}}">
                                                             <td>
-                                                                <input value="{{$size->name}}" type="text" required name="size[{{$i_s}}][name]" placeholder="Name">
+                                                                <input value="{{$size->name}}" type="text"  name="size[{{$i_s}}][name]" placeholder="Name">
                                                             </td>
                                                             <td>
-                                                                <input value="{{$size->price}}" type="text" required name="size[{{$i_s}}][price]" placeholder="Price">
+                                                                <input value="{{$size->price}}" type="text" name="size[{{$i_s}}][price]" placeholder="Price">
                                                             </td>
                                                             <td>
                                                                 <button type="button" id="{{$i_s}}" class="btn btn-danger btn-sm DeleteSize">delete</button>

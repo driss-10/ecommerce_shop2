@@ -155,22 +155,22 @@
                 <div class="col-lg-3 col-md-3">
 
                     <div class="header__nav__option">
-                        @auth
+                
                         <form action="{{ route('logout') }}" method="POST">
                             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
 
                             <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-
+                            @auth
                             @csrf
 
                             <a href="/profile">
                                 <img src="img/icon/user.png" width="18px" alt="">
                             </a>
                             <button class="btn btn-primary btn-sm" type="submit">Logout</button>
-
+                            @endauth
 
                         </form>
-                        @endauth
+                  
                         <!--  <div class="price"></div> -->
                     </div>
 
