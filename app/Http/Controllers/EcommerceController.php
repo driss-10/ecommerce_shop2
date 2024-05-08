@@ -20,6 +20,34 @@ class EcommerceController extends Controller
 
         return view('Ecommerce.Shop');
     }
+   public function getProductSearch(Request $request)
+    {
+        $test = ProductModel::with('getImage')->get();
+        
+        $search = $request->search;
+        $data = ProductModel::with('getImage')->where('title', 'like','%'.$search. '%')->get();
+         
+        /*$data['meta_title'] = 'Search';
+        $data['meta_Description'] = '';
+        $data['meta_Keywords'] = '';
+
+        $getProduct = ProductModel::getProduct();
+        $page = 0;
+        if(!empty($getProduct->nextPageUrl()))
+        {
+            $page_url = parse_url($getProduct->nextPageUrl());
+            if(!empty($parse_url['query']))
+            {
+                parse_str($parse_url['query'], $get_array);
+                $page = !empty($get_array['page']) ? $get_array['page'] : 0;
+            }
+        }
+        $data['getColor'] = ColorModel::getRecordActive();
+        $data['getBrand'] = BrandModel::getRecordActive();
+        $data['page'] = $page;
+        $data['getProduct'] = $getProduct;*/
+        return view('Ecommerce.List', compact('data'));
+    }
     public function list($slug = '', $subslug = '')
     {
 
