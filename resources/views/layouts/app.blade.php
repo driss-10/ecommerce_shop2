@@ -122,8 +122,8 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
-                           <!--  <li><a href="{{route('Shop')}}">Shop</a></li> -->
-                           @php
+                           
+                            @php
                             $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 
                             @endphp
@@ -132,7 +132,7 @@
 
                                     @foreach ($getCategoryHeader as $value)
 
-                                    <li><a href="{{url('/List/'.$value->slug  )}}">{{$value->name}}</a></li>
+                                    <li><a href="{{url($value->slug  )}}">{{$value->name}}</a></li>
                                     @endforeach
 
 
@@ -147,7 +147,7 @@
 
                                 </ul>
                             </li>
-                          
+
                             <li><a href="/Contact">Contacts</a></li>
                     </nav>
                 </div>
@@ -155,7 +155,7 @@
                 <div class="col-lg-3 col-md-3">
 
                     <div class="header__nav__option">
-                
+
                         <form action="{{ route('logout') }}" method="POST">
                             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
 
@@ -170,7 +170,7 @@
                             @endauth
 
                         </form>
-                  
+
                         <!--  <div class="price"></div> -->
                     </div>
 

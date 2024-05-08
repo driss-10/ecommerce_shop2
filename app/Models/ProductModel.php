@@ -64,11 +64,11 @@ class ProductModel extends Model
             $brand_id_arry = explode(",", $brand_id);
             $return = $return->whereIn('product.brand_id', $brand_id_arry);
         }
-        /*if (!empty($request->get('q')))
+        if (!empty($request->get('q')))
         {
             
             $return = $return->where('product.title', 'like','%'.Request::get('q').'%');
-        }*/
+        }
         if (!empty($request->get('color_id'))) {
             $color_id = rtrim($request->get('color_id'), ',');
             $color_id_arry = explode(",", $color_id);
@@ -107,8 +107,6 @@ class ProductModel extends Model
             ->where('product.sub_category_id', '=', $sub_category_id)
             ->where('product.is_delete', '=', 0)
             ->where('product.status', '=', 0)
-            
-            
             ->orderBy('product.id', 'desc')
             ->limit(10)
             ->get();
@@ -141,7 +139,7 @@ class ProductModel extends Model
     }
     public function getCategory()
     {
-        return $this->belongsTo(CategoryModel::class, "Category_id");
+        return $this->belongsTo(CategoryModel::class,'category_id');
     }
     public function getSubcategory()
     {

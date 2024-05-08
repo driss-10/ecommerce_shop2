@@ -93,16 +93,14 @@ Route::group(['midlleware' => 'admin'], function () {
 
 
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
-/* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
-Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
-Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
+
+Route::get('{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
 Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 Route::get('search', [EcommerceController::class, 'getProductSearch']);
 
-Route::get('/ShopDetails/{slug?}', [EcommerceController::class, 'ShopDetails'])->name('Ecommerce.ShopDetails');
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
@@ -113,7 +111,6 @@ Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-//Route::put('/profile/password', [ProfileController::class, 'update'])->name('profile.update');
 
 
 

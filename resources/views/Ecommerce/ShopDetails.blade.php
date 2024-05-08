@@ -13,8 +13,7 @@
                     <div class="product__details__breadcrumb">
                         <a href="/">Home</a>
                        
-    <a href="{{ url($getProduct->getCategory->slug) }}">{{ $getProduct->getCategory->name }}</a>
-
+    
                         <span>Product Details</span>
                     </div>
                 </div>

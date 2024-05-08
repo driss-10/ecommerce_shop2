@@ -14,11 +14,13 @@
 
                 <div class="breadcrumb__text">
                     @if (!empty($getSubCategory))
-                        <h4 class="text-center">{{$getSubCategory->name}}</h4>
+                    <h4 class="text-center">{{$getSubCategory->name}}</h4>
                     @elseif(!empty($getCategory))
-                        <h4 class="text-center">{{$getCategory->name}}</h4>
+                    <h4 class="text-center">{{$getCategory->name}}</h4>
                     @else
-                        <h4 class="text-center">Search for Product</h4>
+                
+                        <h4>Searsh for {{Request::get('q')}}</h4>
+                    <h4 class="text-center">Search for Product</h4>
                     @endif
 
                     <div class="breadcrumb__links">
@@ -29,6 +31,8 @@
                         <span>{{$getSubCategory->name}}</span>
                         @elseif(!empty($getCategory))
                         <span>{{$getCategory->name}}</span>
+                        
+
                         @endif
 
 
@@ -48,12 +52,17 @@
                 <div class="shop__sidebar">
 
                     <div class="shop__sidebar__search">
+                        <a href="" role="button" title="search"><span class="icon_search"></span></a>
                         <form action="{{url('search')}}" method="get">
-                            <input type="text" name="search" placeholder="Search...">
-                            <button type="submit"><span class="icon_search"></span></button>
-                            <!-- <input type="text" name="sub_category_id" id="get_category_id">
+                            <input type="search" placeholder="Search..." name='q' id='q' value="{{!empty(Request::get('q'))}}">
+                            <!--  <button type="submit"><span class="icon_search"></span></button> -->
+
+                        </form>
+                        <form form action="" id="FilterForm" method="post">
+                            {{csrf_field()}}
+                            <input type="text" name="sub_category_id" id="get_category_id">
                             <input type="text" name="brand_id" id="get_brand_id">
-                            <input type="text" name="color_id" id="get_color_id"> -->
+                            <input type="text" name="color_id" id="get_color_id">
                         </form>
                     </div>
                     <div class="shop__sidebar__accordion">
@@ -120,7 +129,7 @@
                                 </div>
                                 @endif
                             </div>
-                            <!--              <div class="card">
+                            <!-- <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
                                 </div>
@@ -244,133 +253,133 @@
                         @if(!empty($data))
                         <div class="col-lg-12">
                             @foreach($data as $items)
-                                
-                                <div style=" display: flex;justify-content: center;align-items: center;">
-                                   
-                                    {{-- {{$getProduct->links() }} --}}
-                                    {{$items->id}}
-                                    {{$items->title}}
-                                    {{$items->price}}
-                                    @foreach ($items->getImage as $item)
-                                        <h1>{{$item->id}}</h1>
-                                        <img src="{{$item->image_name}}" alt="">
-                                    @endforeach
-                                    
-                                    
-                                    
-                                </div>
-                                
+
+                            <div style=" display: flex;justify-content: center;align-items: center;">
+
+                                {{-- {{$getProduct->links() }} --}}
+                                {{$items->id}}
+                                {{$items->title}}
+                                {{$items->price}}
+                                @foreach ($items->getImage as $item)
+                                <h1>{{$item->id}}</h1>
+                                <img src="{{$item->image_name}}" alt="">
+                                @endforeach
+
+
+
+                            </div>
+
                             @endforeach
                             {{-- @if(!empty($getProduct))
                             <div style=" display: flex;justify-content: center;align-items: center;">
-                                 {{$getProduct->links() }} 
-                                
-                            </div>
-                            @endif --}}
-                        </div>
-                        @endif
-                    </div>
+                                 {{$getProduct->links() }}
 
+                        </div>
+                        @endif --}}
+                    </div>
+                    @endif
                 </div>
+
             </div>
         </div>
-        <script>
-            $('.ChangeCategory').change(function() {
-                var ids = '';
-                $('.ChangeCategory').each(function() {
-                    if (this.checked) {
-                        var id = $(this).val();
-                        ids += id + ',';
-                    }
-                });
-                $('#get_category_id').val(ids);
-                FilterForm();
-
-
+    </div>
+    <script>
+        $('.ChangeCategory').change(function() {
+            var ids = '';
+            $('.ChangeCategory').each(function() {
+                if (this.checked) {
+                    var id = $(this).val();
+                    ids += id + ',';
+                }
             });
-            $('.ChangeBrand').change(function() {
-                var ids = '';
-                $('.ChangeBrand').each(function() {
-                    if (this.checked) {
-                        var id = $(this).val();
-                        ids += id + ',';
-                    }
-                });
-                $('#get_brand_id').val(ids);
-                FilterForm();
+            $('#get_category_id').val(ids);
+            FilterForm();
 
 
+        });
+        $('.ChangeBrand').change(function() {
+            var ids = '';
+            $('.ChangeBrand').each(function() {
+                if (this.checked) {
+                    var id = $(this).val();
+                    ids += id + ',';
+                }
             });
+            $('#get_brand_id').val(ids);
+            FilterForm();
 
-            $('.ChangeColor').click(function() {
-                var id = $(this).attr('id');
+
+        });
+
+        $('.ChangeColor').click(function() {
+            var id = $(this).attr('id');
+            var status = $(this).attr('data-val');
+            if (status == 0) {
+                $(this).attr('data-val', 1);
+                $(this).addClass('active-color');
+            } else {
+                $(this).attr('data-val', 0);
+                $(this).removeClass('active-color');
+            }
+            var ids = '';
+            $('.ChangeColor').each(function() {
                 var status = $(this).attr('data-val');
-                if (status == 0) {
-                    $(this).attr('data-val', 1);
-                    $(this).addClass('active-color');
-                } else {
-                    $(this).attr('data-val', 0);
-                    $(this).removeClass('active-color');
+                if (status == 1) {
+                    var id = $(this).attr('id');
+                    ids += id + ',';
                 }
-                var ids = '';
-                $('.ChangeColor').each(function() {
-                    var status = $(this).attr('data-val');
-                    if (status == 1) {
-                        var id = $(this).attr('id');
-                        ids += id + ',';
-                    }
-                });
-                console.log(ids);
-                $('#get_color_id').val(ids);
-                FilterForm();
-
             });
-            var xhr;
+            console.log(ids);
+            $('#get_color_id').val(ids);
+            FilterForm();
 
-            function FilterForm() {
-                if (xhr && xhr.readyState != 1) {
-                    xhr.abort();
+        });
+        var xhr;
 
-                }
-                xhr = $.ajax({
-                    type: "POST", // Use POST method
-                    url: "{{ url('get_Poduct_Ajax') }}",
-                    data: $('#FilterForm').serialize(),
-                    dataType: "json",
-                    success: function(data) {
-                        $('#getProductAjax').html(data.success)
-                    },
-                    error: function(data) {
-                        // Handle error response
-
-                    }
-                });
+        function FilterForm() {
+            if (xhr && xhr.readyState != 1) {
+                xhr.abort();
 
             }
-            /*  if (typeof noUiSlider === 'object') {
-                 var priceSlider = document.getElementById('price-slider');
-                 noUiSlider.create(priceSlider, {
-                     start: [0, 750],
-                     connect: true,
-                     step: 50,
-                     margin: 200,
-                     range: {
-                         'min': 0,
-                         'max': 1000
-                     },
-                     tooltips: true,
-                     format: wNumb({
-                         decimals: 0,
-                         prefix: '$'
-                     })
-                 });
+            xhr = $.ajax({
+                type: "POST", // Use POST method
+                url: "{{ url('get_Poduct_Ajax') }}",
+                data: $('#FilterForm').serialize(),
+                dataType: "json",
+                success: function(data) {
+                    $('#getProductAjax').html(data.success)
+                },
+                error: function(data) {
+                    // Handle error response
 
-                 // Update Price Range
-                 priceSlider.noUiSlider.on('update', function(values, handle) {
-                     $('#filter-price-range').text(values.join(' - '));
-                 });
-             } */
-        </script>
+                }
+            });
+
+        }
+        /*  if (typeof noUiSlider === 'object') {
+             var priceSlider = document.getElementById('price-slider');
+             noUiSlider.create(priceSlider, {
+                 start: [0, 750],
+                 connect: true,
+                 step: 50,
+                 margin: 200,
+                 range: {
+                     'min': 0,
+                     'max': 1000
+                 },
+                 tooltips: true,
+                 format: wNumb({
+                     decimals: 0,
+                     prefix: '$'
+                 })
+             });
+
+             // Update Price Range
+             priceSlider.noUiSlider.on('update', function(values, handle) {
+                 $('#filter-price-range').text(values.join(' - '));
+             });
+         } */
+    </script>
 
 
 </section>
