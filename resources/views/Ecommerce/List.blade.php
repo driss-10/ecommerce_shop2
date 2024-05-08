@@ -14,9 +14,11 @@
 
                 <div class="breadcrumb__text">
                     @if (!empty($getSubCategory))
-                    <h4 class="text-center">{{$getSubCategory->name}}</h4>
+                        <h4 class="text-center">{{$getSubCategory->name}}</h4>
+                    @elseif(!empty($getCategory))
+                        <h4 class="text-center">{{$getCategory->name}}</h4>
                     @else
-                    <h4 class="text-center">{{$getCategory->name}}</h4>
+                        <h4 class="text-center">Search for Product</h4>
                     @endif
 
                     <div class="breadcrumb__links">
@@ -25,7 +27,7 @@
                         @if (!empty($getSubCategory))
                         <span><a href="{{url($getCategory->Category_id)}}">{{$getCategory->name}}</a></span>
                         <span>{{$getSubCategory->name}}</span>
-                        @else
+                        @elseif(!empty($getCategory))
                         <span>{{$getCategory->name}}</span>
                         @endif
 
@@ -46,11 +48,18 @@
                 <div class="shop__sidebar">
 
                     <div class="shop__sidebar__search">
+
+                        <form action="{{url('search')}}" method="get">
+                            <input type="text" name="search" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                            <!-- <input type="text" name="sub_category_id" id="get_category_id">
+
                         <form action="" id="FilterForm" method="post">
                             {{csrf_field()}}
                             <input type="text" placeholder="Search...">
                             <button type="submit"><span class="icon_search"></span></button> 
                             <div><input type="text" name="sub_category_id" id="get_category_id">
+
                             <input type="text" name="brand_id" id="get_brand_id">
                             <input type="text" name="color_id" id="get_color_id"></div>
                         </form>
@@ -61,6 +70,7 @@
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
                                 </div>
+                                @if(!empty($getSubCategoryFillter))
                                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <!--    @php
@@ -87,6 +97,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
 
 
@@ -94,6 +105,7 @@
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
                                 </div>
+                                @if(!empty($getBrand))
                                 <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand pp">
@@ -114,6 +126,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                             <!--              <div class="card">
                                 <div class="card-heading">
@@ -177,6 +190,7 @@
                                 </div>
                                 <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
                                     <div class="card-body">
+                                        @if(!empty($getColor))
                                         <div class="shop__sidebar__color">
                                             @foreach ($getColor as $_color )
 
@@ -186,6 +200,7 @@
 
 
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -229,19 +244,39 @@
                                 </select>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div id="getProductAjax">
                     @include('Ecommerce._List')
                     <div class="row">
+                        @if(!empty($data))
                         <div class="col-lg-12">
-
-
+                            @foreach($data as $items)
+                                
+                                <div style=" display: flex;justify-content: center;align-items: center;">
+                                   
+                                    {{-- {{$getProduct->links() }} --}}
+                                    {{$items->id}}
+                                    {{$items->title}}
+                                    {{$items->price}}
+                                    @foreach ($items->getImage as $item)
+                                        <h1>{{$item->id}}</h1>
+                                        <img src="{{$item->image_name}}" alt="">
+                                    @endforeach
+                                    
+                                    
+                                    
+                                </div>
+                                
+                            @endforeach
+                            {{-- @if(!empty($getProduct))
                             <div style=" display: flex;justify-content: center;align-items: center;">
-                                {{$getProduct->links() }}
+                                 {{$getProduct->links() }} 
+                                
                             </div>
+                            @endif --}}
                         </div>
+                        @endif
                     </div>
 
                 </div>

@@ -64,6 +64,11 @@ class ProductModel extends Model
             $brand_id_arry = explode(",", $brand_id);
             $return = $return->whereIn('product.brand_id', $brand_id_arry);
         }
+        /*if (!empty($request->get('q')))
+        {
+            
+            $return = $return->where('product.title', 'like','%'.Request::get('q').'%');
+        }*/
         if (!empty($request->get('color_id'))) {
             $color_id = rtrim($request->get('color_id'), ',');
             $color_id_arry = explode(",", $color_id);

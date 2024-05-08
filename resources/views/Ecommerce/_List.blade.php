@@ -1,4 +1,5 @@
 <div>
+    @if(!empty($getProduct))
     <div class="row">
         @foreach ($getProduct as $value)
         @php
@@ -47,6 +48,7 @@
         </div>
         @endforeach
     </div>
+    @endif
 
 </div>
 </div>

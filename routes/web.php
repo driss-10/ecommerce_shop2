@@ -100,6 +100,7 @@ Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
+Route::get('search', [EcommerceController::class, 'getProductSearch']);
 
 //Route::get('/ShopDetails/{slug?}/{subslug?}', [EcommerceController::class, 'ShopDetails'])->name('Ecommerce.ShopDetails');
 
@@ -120,5 +121,6 @@ Route::put('/profile/update', [ProfileController::class, 'update'])->name('profi
 
 
 
-Route::get('/Contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/Contact', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/Contact', [ContactController::class, 'Contact']);
 Route::get('admin/message/list', [MessageController::class, 'ShowMessage']);
