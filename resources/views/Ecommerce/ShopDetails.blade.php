@@ -12,8 +12,8 @@
                 <div class="col-lg-12">
                     <div class="product__details__breadcrumb">
                         <a href="/">Home</a>
-                       
-    
+
+
                         <span>Product Details</span>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <div class="tab-pane" id="tabs-4" role="tabpanel">
                             <div class="product__details__pic__item">
                                 <img src="{{url('')}}/img/shop-details/product-big-4.png" alt="">
-                                
+
                             </div>
                             @endif
                         </div>
@@ -95,11 +95,11 @@
                             <div class="product__details__option__size">
                                 <span>Size:</span>
                                 @foreach ($getProduct->getSize as $size)
-                                <label for="{{$size->id}}">{{$size->name}}@if (!empty($size->price))
+                                <label data-price="{{!empty($size->price) ? $size->price : 0}}" for="{{$size->id}}">{{$size->name}}@if (!empty($size->price))
 
                                     {{number_format($size->price,2)}}$
                                     @endif
-                                    <input type="radio" id="{{$size->id}}">
+                                    <input value="{{$size->id}}" class="getSizePrice" data-price="{{!empty($size->price) ? $size->price : 0}}" type="radio" id="{{$size->id}}">
 
                                 </label>
                                 @endforeach
@@ -235,36 +235,36 @@
                         @endif
 
                         <ul class="product__hover">
-                        <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
-                    </ul>
-                </div>
-                <div class="product__item__text">
-                    <a href="{{url($value->category_slug. '/' .$value->sub_category_slug)}}">
-                        <h5>{{$value->sub_category_name}}</h5>
-                    </a>
+                            <li><a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <a href="{{url($value->category_slug. '/' .$value->sub_category_slug)}}">
+                            <h5>{{$value->sub_category_name}}</h5>
+                        </a>
 
-                    <a href="{{url($value->slug)}}">
-                        <h6>{{$value->title}}</h6>
-                    </a>
-                    <div class="rating">
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <h5>${{number_format($value->price,2)}}</h5>
-                    <div class="product__color__select">
-                        <label for="pc-4">
-                            <input type="radio" id="pc-4">
-                        </label>
-                        <label class="active black" for="pc-5">
-                            <input type="radio" id="pc-5">
-                        </label>
-                        <label class="grey" for="pc-6">
-                            <input type="radio" id="pc-6">
-                        </label>
-                    </div>
+                        <a href="{{url($value->slug)}}">
+                            <h6>{{$value->title}}</h6>
+                        </a>
+                        <div class="rating">
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <h5>${{number_format($value->price,2)}}</h5>
+                        <div class="product__color__select">
+                            <label for="pc-4">
+                                <input type="radio" id="pc-4">
+                            </label>
+                            <label class="active black" for="pc-5">
+                                <input type="radio" id="pc-5">
+                            </label>
+                            <label class="grey" for="pc-6">
+                                <input type="radio" id="pc-6">
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -273,6 +273,15 @@
 
         </div>
     </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).click(function() {
+            var price = $('.getSizePrice', this).attr('data-price');
+            console.log(price);
+        });
+    </script> -->
 </section>
 <!-- Related Section End -->
 
