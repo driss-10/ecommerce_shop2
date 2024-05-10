@@ -14,6 +14,7 @@ use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentCntroller;
 
 
 
@@ -100,13 +101,16 @@ Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name(
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 Route::get('search', [EcommerceController::class, 'getProductSearch']);
+Route::post('Product/addCart/{id}', [PaymentCntroller::class, 'addCart']);
 
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
+
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
-Route::post('/logout', [EcommerceAuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [EcommerceAuthController::class, 'logout'])->name('logout'); // Changed to GET method
 Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
+
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

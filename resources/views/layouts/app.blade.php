@@ -90,8 +90,8 @@
 
                                 @guest
                                 <a href="/Login">Sign in</a>
-
                                 @endguest
+
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -122,7 +122,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
-                           
+
                             @php
                             $getCategoryHeader =App\Models\CategoryModel::getRecordMenu();
 

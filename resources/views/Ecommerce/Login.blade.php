@@ -19,8 +19,9 @@
                 </div>
               </div>
             </div>
+            @include('admin.layouts.messages') <!-- Move error messages outside of the form -->
             <form action='{{route('auth.login')}}' method="POST">
-                @csrf
+              @csrf
               <div class="row gy-3 gy-md-4 overflow-hidden">
                 <div class="col-12">
                   <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
@@ -28,8 +29,7 @@
                 </div>
                 <div class="col-12">
                   <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                  <input type="password" class="form-control" name="password" placeholder="********"  id="password" value="" required>
-                  @include('admin.layouts.messages')
+                  <input type="password" class="form-control" name="password" placeholder="********" id="password" value="" required>
                 </div>
                 <div class="col-12">
                   <div class="form-check">
