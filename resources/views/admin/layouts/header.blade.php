@@ -103,6 +103,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item ">
+          <a href="{{url('admin/slider/list')}}" class="nav-link  @if( Request::segment(2) == 'slider' ) active @endif">
+            <i class="nav-icon fas fa-comments" aria-hidden="true"></i>
+            <p>
+              Slider
+            </p>
+          </a>
+        </li>
             <li class="nav-item">
               <a href="{{url('admin/logout')}}" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>

@@ -17,9 +17,11 @@
                     </ul>
                 </div>
                 <div class="product__item__text">
-                    <a href="{{url($value->category_slug. '/' .$value->sub_category_slug)}}">
-                        <h5>{{$value->sub_category_name}}</h5>
-                    </a>
+                    <hr>
+                        <a href="{{url($value->category_slug. '/' .$value->sub_category_slug)}}">
+                            <h5>{{$value->sub_category_name}}</h5>
+                        </a>
+                    </hr>
 
                     <a href="{{url($value->slug)}}">
                         <h6>{{$value->title}}</h6>
