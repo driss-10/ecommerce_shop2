@@ -47,27 +47,11 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 @if (!empty($getProductImages) && !empty($getProductImages->getLogo()))
                                 <div class="product__details__pic__item">
-                                    <img src="{{url('')}}/img/shop-details/product-big-2.png" alt="">
+                                    <img src="{{$getProductImages->getLogo()}}" alt="">
                                 </div>
                             </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{url('')}}/img/shop-details/product-big-3.png" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{url('')}}/img/shop-details/product-big.png" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{url('')}}/img/shop-details/product-big-4.png" alt="">
-
-                                </div>
-                                @endif
-                            </div>
-
+                           
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -95,12 +79,12 @@
                                 <div class="product__details__option__size">
                                     <span>Size:</span>
                                     @foreach ($getProduct->getSize as $size)
-                                    <label data-price="{{ !empty($size->price) ? $size->price : 0 }}" >
+                                    <label data-price="{{ !empty($size->price) ? $size->price : 0 }}">
                                         {{ $size->name }}
                                         @if (!empty($size->price))
                                         {{ number_format($size->price, 2) }}$
                                         @endif
-                                        <input value="{{ $size->id }}" class="getSizePrice" data-price="{{ !empty($size->price) ? $size->price : 0 }}" type="radio" id="size_id" name="size_id">
+                                        <input value="size" class="getSizePrice" data-price="{{ !empty($size->price) ? $size->price : 0 }}" type="radio" id="size" name="size">
                                     </label>
                                     @endforeach
 
@@ -132,7 +116,7 @@
 
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="number" data-decimal="0" value="1" min='1' max='100' id='qte' name="qte" require step="1">
+                                        <input type="number" data-decimal="0" value="1" min='1' max='100' id='quantity' name="quantity" require step="1">
                                     </div>
                                 </div>
 

@@ -105,7 +105,7 @@ Route::post('Product/addCart/{id}', [PaymentCntroller::class, 'addCart']);
 
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
-
+  
 Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
 Route::get('/logout', [EcommerceAuthController::class, 'logout'])->name('logout'); // Changed to GET method
 Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');

@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('product_title')->nullable();
+            $table->string('title')->nullable();
             $table->string('quantity')->nullable();
             $table->string('price')->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
             $table->timestamps();
         });
     }
