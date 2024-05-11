@@ -113,9 +113,9 @@ class EcommerceController extends Controller
 
     public function ShoppingCart()
     {
-        if (!auth()->check()) {
+         if (!auth()->check()) {
             return redirect()->route('Login');
-        }
+        } 
         return view('Ecommerce.ShoppingCart');
     }
     public function About()

@@ -10,7 +10,9 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
+ 
     public function list(){
+    
         $data['getRecord'] = User::getAdmin();
         $data['header_title']='admin';
         return view('admin.admin.list',$data); 
@@ -18,12 +20,16 @@ class AdminController extends Controller
 
     
     public function add(){
+        if (!auth()->check()) {
+            return redirect()->route('admin.admin');
+        } 
        
         $data['header_title']='Add New Admin';
         return view('admin.admin.add',$data); 
     }
 
     public function insert(Request $request){
+       
         $user = New User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -36,6 +42,7 @@ class AdminController extends Controller
 
     public function edite($id)
     {
+        
         $data['getRecord'] = User::getSingle($id);
         $data['header_title']='Edite dmin';
         return view('admin.admin.edite',$data); 
@@ -43,6 +50,7 @@ class AdminController extends Controller
     }
 
     public function update($id, Request $request){
+      
         $user = User::getSingle($id);
         $user->name = $request->name;
         $user->email = $request->email;

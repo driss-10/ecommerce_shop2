@@ -37,88 +37,38 @@
                                 <th></th>
                             </tr>
                         </thead>
+
+
+                        @foreach ($cart as $carts )
                         <tbody>
+
                             <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
-                                        <img src="img/shopping-cart/cart-1.jpg" alt="">
+                                        <img src="{{ asset($carts->image_name) }}" alt="">
+                                        <img src="{{ $carts->image_name}}" alt="">
+
                                     </div>
                                     <div class="product__cart__item__text">
-                                        <h6>T-shirt Contrast Pocket</h6>
-                                        <h5>$98.49</h5>
+                                        <h6>{{ $carts->title}}</h6>
+                                        <h5>${{ $carts->price}}</h5>
                                     </div>
                                 </td>
                                 <td class="quantity__item">
                                     <div class="quantity">
                                         <div class="pro-qty-2">
-                                            <input type="text" value="1">
+                                            <input type="text" value="{{ $carts->quantity}}">
                                         </div>
                                     </div>
                                 </td>
                                 <td class="cart__price">$ 30.00</td>
-                                <td class="cart__close"><i class="fa fa-close"></i></td>
+                                <td class="cart__close"><a href="{{url('delete',$carts->id)}}"><i class="fa fa-close"></i></a></td>
                             </tr>
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="img/shopping-cart/cart-2.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>Diagonal Textured Cap</h6>
-                                        <h5>$98.49</h5>
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-                                        <div class="pro-qty-2">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">$ 32.50</td>
-                                <td class="cart__close"><i class="fa fa-close"></i></td>
-                            </tr>
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="img/shopping-cart/cart-3.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>Basic Flowing Scarf</h6>
-                                        <h5>$98.49</h5>
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-                                        <div class="pro-qty-2">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">$ 47.00</td>
-                                <td class="cart__close"><i class="fa fa-close"></i></td>
-                            </tr>
-                            <tr>
-                                <td class="product__cart__item">
-                                    <div class="product__cart__item__pic">
-                                        <img src="img/shopping-cart/cart-4.jpg" alt="">
-                                    </div>
-                                    <div class="product__cart__item__text">
-                                        <h6>Basic Flowing Scarf</h6>
-                                        <h5>$98.49</h5>
-                                    </div>
-                                </td>
-                                <td class="quantity__item">
-                                    <div class="quantity">
-                                        <div class="pro-qty-2">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="cart__price">$ 30.00</td>
-                                <td class="cart__close"><i class="fa fa-close"></i></td>
-                            </tr>
+
+
+
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
                 <div class="row">

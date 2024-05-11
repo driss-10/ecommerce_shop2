@@ -47,10 +47,10 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 @if (!empty($getProductImages) && !empty($getProductImages->getLogo()))
                                 <div class="product__details__pic__item">
-                                    <img src="{{$getProductImages->getLogo()}}" alt="">
+                                    <img id='image_name' src="{{$getProductImages->getLogo()}}" alt="">
                                 </div>
                             </div>
-                           
+
                             @endif
                         </div>
                     </div>
@@ -77,30 +77,31 @@
                             <div class="product__details__option">
                                 @if (!empty($getProduct->getSize->count()))
                                 <div class="product__details__option__size">
-                                    <span>Size:</span>
-                                    @foreach ($getProduct->getSize as $size)
-                                    <label data-price="{{ !empty($size->price) ? $size->price : 0 }}">
-                                        {{ $size->name }}
-                                        @if (!empty($size->price))
-                                        {{ number_format($size->price, 2) }}$
-                                        @endif
-                                        <input value="size" class="getSizePrice" data-price="{{ !empty($size->price) ? $size->price : 0 }}" type="radio" id="size" name="size">
-                                    </label>
-                                    @endforeach
-
+                                    <select name="size_id" id="size_id" require>
+                                        <option>Select a Size</option>
+                                        @foreach ($getProduct->getSize as $size)
+                                        <option value="{{ $size->name }}">
+                                            {{ $size->name }}
+                                            @if (!empty($size->price))
+                                            {{ number_format($size->price, 2) }}$
+                                            @endif
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 @endif
 
                                 @if (!empty($getProduct->getColor->count()))
                                 <div class="product__details__option__color">
-                                    <span>Color:</span>
+
                                     <!--                            @foreach ($getProduct->getColor as $color)
                                 <label style="background: {{$color->getColor->code}};" class="c-1" for="color_id">
                                     <input type="radio" id="{color_id" name="color_id" value="{{$color->getColor->id}}">
                                 </label>
 
                                 @endforeach -->
-                                    <select name="color_id" id="color_id">
+                                    <select name="color" id="color">
+                                        <option>Select a Color</option>
                                         @foreach ($getProduct->getColor as $color)
                                         <option value="{{$color->getColor->id}}"> {{$color->getColor->name}}</option>
                                         @endforeach
@@ -119,8 +120,11 @@
                                         <input type="number" data-decimal="0" value="1" min='1' max='100' id='quantity' name="quantity" require step="1">
                                     </div>
                                 </div>
-
                                 <button type="submit" class="primary-btn">add to cart</button>
+                                @if(session()->has('message'))
+
+                                {{session()->get('message')}}
+                                @endif
                             </div>
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
