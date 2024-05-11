@@ -23,7 +23,7 @@
                         <div class="col-md-12">
 
                             <div class="card card-primary">
-                            <form action="" method="POST">
+                            <form action="" method="POST"  enctype="multipart/form-data" >
                                 {{csrf_field()}}
                                 <div class="card-body">
                                 <div class="form-group">
@@ -45,6 +45,24 @@
                                     <option {{(old('status') == 1) ? 'selected' : ''}} value="1">Inactive</option>
                                     </select>
                                 </div>
+                                <hr>
+                                    <div class="form-group">
+                                        <label >Image<span style="color:red">*</span></label></label>
+                                        <input type="file" class="form-control"  name="image_name" >
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label >Button Name<span style="color:red">*</span></label></label>
+                                        <input type="text" class="form-control"  name="button_name"  value="{{old('button_name')}}" 
+                                        placeholder="Button Name" >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display:block;">Home Screen <span style="color:red">*</span></label></label>
+                                        <input type="checkbox"   name="is_home" >
+                                    </div>
+                                <hr>
                                 <hr>
                                     <div class="form-group">
                                         <label >Meta title</label>

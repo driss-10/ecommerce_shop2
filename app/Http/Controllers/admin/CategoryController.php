@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\CategoryModel;
 use Auth;
+use Str;
 
 
 class CategoryController extends Controller
@@ -35,6 +36,22 @@ class CategoryController extends Controller
         $category -> meta_title = trim($request->meta_title);
         $category -> meta_keywords = trim($request->meta_keywords);
         $category -> created_by = Auth::user()->id;
+
+
+        $category -> button_name = trim($request->button_name);
+        $category -> is_home = !empty($request->is_home) ? 1 : 0 ;
+
+        if(!empty($request->file('image_name')))
+        {
+            $file = $request->file('image_name');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('image/category/', $filename);
+            $category -> image_name = trim($filename);
+
+        }
+
         $category ->save();
 
         return  redirect('admin/category/list')->with('success', "Category successfully created");
@@ -61,6 +78,20 @@ class CategoryController extends Controller
         $category -> status = trim($request->status);
         $category -> meta_title = trim($request->meta_title);
         $category -> meta_keywords = trim($request->meta_keywords);
+
+        $category -> button_name = trim($request->button_name);
+        $category -> is_home = !empty($request->is_home) ? 1 : 0 ;
+
+        if(!empty($request->file('image_name')))
+        {
+            $file = $request->file('image_name');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('image/category/', $filename);
+            $category -> image_name = trim($filename);
+
+        }
         $category ->save();
 
         return  redirect('admin/category/list')->with('success', "Category successfully updated");

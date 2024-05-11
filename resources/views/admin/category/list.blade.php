@@ -35,11 +35,13 @@
                         <thead>
                           <tr>
                             <th >Id</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Slug</th>
                             <th >Meta Title</th>
                             <th >Meta Keywords</th>
                             <th >Created by</th>
+                            <th >Home</th>
                             <th >Status</th>
                             <th >Created Date</th>
                             <th >Action</th>
@@ -49,12 +51,18 @@
                           @foreach ($getRecord as $value)
                           <tr>
                             <td>{{($value->id)}}</td>
+                            <td>
+                              @if (!empty($value->getImage()))
+                                <img src="{{ $value->getImage() }}" style="height: 100px" >
+                              @endif
+                            </td>
                             <td>{{($value->name)}}</td>
                             <td>{{($value->slug)}}</td>
                             <td>{{$value->meta_title }}</td>
                             <td>{{$value->meta_keywords }}</td>
                             <td>{{$value->created_by_name}}</td>
-                            <td>{{($value->status == 0) ? 'active' : 'Inactive'}}</td>
+                            <td>{{($value->status == 0) ? 'Yes' : 'No'}}</td>
+                            <td>{{($value->is_home == 0) ? 'active' : 'Inactive'}}</td>
                             <td>{{ date('d-m-y', strtotime($value->created_at))}}</td>
                             <td>
                               <a href="{{url('admin/category/edite/'.$value->id)}}" class="btn btn-primary">Edite</a>

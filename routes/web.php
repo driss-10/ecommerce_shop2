@@ -16,6 +16,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\admin\SlideController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\PartnerController;
+
 
 
 
@@ -97,6 +99,16 @@ Route::group(['midlleware' => 'admin'], function () {
     Route::get('admin/slider/delete/{id}', [SlideController::class, 'delete']);
 
 
+    Route::get('admin/partner/list', [PartnerController::class, 'list']);
+    Route::get('admin/partner/add', [PartnerController::class, 'add']);
+    Route::POST('admin/partner/add', [PartnerController::class, 'insert']);
+    Route::get('admin/partner/edite/{id}', [PartnerController::class, 'edite']);
+    Route::post('admin/partner/edite/{id}', [PartnerController::class, 'update']);
+    Route::get('admin/partner/delete/{id}', [PartnerController::class, 'delete']);
+
+
+
+
 
 
 
@@ -110,16 +122,14 @@ Route::group(['midlleware' => 'admin'], function () {
 
 
 
-<<<<<<< Updated upstream
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 
 Route::get('{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
-=======
+
 Route::get('/', [HomeController::class, 'Home'])->name('Home');
 /* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
 Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
-Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
->>>>>>> Stashed changes
+
 Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
 Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
