@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Has;
-
+use App\Mail\ForgotPasswordMail;
 use Hash;
 use Str;
 use Mail;
@@ -67,4 +67,29 @@ class EcommerceAuthController extends Controller
         
         return redirect()->route('Login'); 
     }
+
+    public function forgot()
+    {
+        return view('Ecommerce.forgot');
+    }
+    
+    public function forgot_password(Request $request)
+    
+    {
+        $user = User::where('email' , '=',$request->email)->first();
+        if(!empty($user))
+        {
+            $user->remember_token = Str::random(40);
+            $user->save();
+            Mail::to($user->email)->send(new ForgotPasswordMail($user));
+            
+
+            return redirect()->back()->with('success', "please check your email and rest your password");
+        }
+        else
+        {
+            return redirect()->back()->with('error', "Email not found in system try again");
+        }   
+    }
+   
 }    
