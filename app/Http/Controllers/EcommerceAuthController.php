@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Has;
-use App\Mail\ForgotPasswordMail;
+
 use Hash;
 use Str;
 use Mail;
@@ -28,13 +28,14 @@ class EcommerceAuthController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'], // Add validation for last name
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', 'min:8'],
             'phone' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'codepostal' => ['required', 'string', 'max:5','min:5'],
+            'codepostal' => ['required', 'string', 'max:5', 'min:5'],
         ]);
-
+    
         $user = new User();
         $user->name = $request->name;
         $user->lastname = $request->lastname;
@@ -45,56 +46,25 @@ class EcommerceAuthController extends Controller
         $user->codepostal = $request->codepostal;
         $user->country = $request->country;
         $user->city = $request->city;
-
-
-        $result = $user->save();
-        if ($result) {
-            return redirect()->route('Login');
-        } else {
-            return back()->with('fail', 'Something wrong!');
-        }
+    
+        $user->save(); // Laravel will handle validation errors automatically
+    
+        return redirect()->route('Login'); // Redirect to the login page after registration
     }
-
+    
     public function handllogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->route('Home');
         }
-        return redirect()->back()->with('error', "Email not found in system try again  or your password not true");
-        return back()->withInput()->withErrors(['email' => 'Invalid email or password']);
+        return redirect()->back()->with('error', "Email not found in system or incorrect password"); // Simplify error message
     }
+    
     public function logout(Request $request)
     {
-        Auth::logout(); // Déconnexion de l'utilisateur
-        $request->session()->forget('key'); // Supprimer les données de session spécifiques
-        return redirect()->route('Login'); // Redirection vers la page de connexion
+        Auth::logout(); 
+        
+        return redirect()->route('Login'); 
     }
-    public function forgot()
-    {
-        return view('Ecommerce.forgot');
-    }
-    
-    public function forgot_password(Request $request)
-    
-    {
-        $user = User::where('email' , '=',$request->email)->first();
-        if(!empty($user))
-        {
-            $user->remember_token = Str::random(40);
-            $user->save();
-            Mail::to($user->email)->send(new ForgotPasswordMail($user));
-            
-
-            return redirect()->back()->with('success', "please check your email and rest your password");
-        }
-        else
-        {
-            return redirect()->back()->with('error', "Email not found in system try again");
-        }   
-    }
-   
-
-
-
-}
+}    
