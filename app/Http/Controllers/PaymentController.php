@@ -59,5 +59,6 @@ class PaymentController extends Controller
 
     public function Cart(Request $request)
     {
+        return view('Ecommerce.ShoppingCart');
     }
 }

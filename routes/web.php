@@ -89,20 +89,21 @@ Route::group(['midlleware' => 'admin'], function () {
 
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 
-Route::get('{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
+Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
+
 Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
 //Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 Route::get('search', [EcommerceController::class, 'getProductSearch']);
-Route::get('Cart', [PaymentController::class, 'Cart']);
+Route::get('/Cart', [PaymentController::class, 'Cart']);
 Route::post('Product/addCart/{id}', [PaymentController::class, 'addCart']);
 
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
   
-Route::post('/Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
-Route::get('/logout', [EcommerceAuthController::class, 'logout'])->name('logout'); // Changed to GET method
+Route::post('Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
+Route::get('/Logout', [EcommerceAuthController::class, 'logout'])->name('logout'); // Changed to GET method
 Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
 

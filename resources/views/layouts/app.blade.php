@@ -132,7 +132,7 @@
 
                                     @foreach ($getCategoryHeader as $value)
 
-                                    <li><a href="{{url($value->slug  )}}">{{$value->name}}</a></li>
+                                    <li><a href="{{url('List',$value->slug)}}">{{$value->name}}</a></li>
                                     @endforeach
 
 
@@ -142,7 +142,7 @@
                                 <ul class="dropdown">
                                     <li><a href="/About">About Us</a></li>
                                     <li><a href="/ShopDetails">Shop Details</a></li>
-                                    <li><a href="{{url('Cart')}}">Shopping Cart</a></li>
+                                    <li><a href="/Cart">Shopping Cart</a></li>
                                     <li><a href="/CheckOut">Check Out</a></li>
 
                                 </ul>
