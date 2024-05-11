@@ -62,7 +62,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
             <a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price"></div>
 
         </div>
@@ -142,7 +142,7 @@
                                 <ul class="dropdown">
                                     <li><a href="/About">About Us</a></li>
                                     <li><a href="/ShopDetails">Shop Details</a></li>
-                                    <li><a href="/ShoppingCart">Shopping Cart</a></li>
+                                    <li><a href="{{url('Cart')}}">Shopping Cart</a></li>
                                     <li><a href="/CheckOut">Check Out</a></li>
 
                                 </ul>
@@ -159,7 +159,7 @@
                         <form action="{{ route('logout') }}" method="POST">
                             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
 
-                            <a href="/ShoppingCart"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+                            <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
                             @auth
                             @csrf
 

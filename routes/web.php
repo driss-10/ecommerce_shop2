@@ -14,13 +14,7 @@ use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\PaymentCntroller;
-
-
-
-
-
-
+use App\Http\Controllers\PaymentController;
 
 Route::get('admin', function () {
     return view('admin.auth.login');
@@ -97,11 +91,12 @@ Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 
 Route::get('{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
 Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
-Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
+//Route::get('/ShoppingCart', [EcommerceController::class, 'ShoppingCart'])->name('ShoppingCart');
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 Route::get('search', [EcommerceController::class, 'getProductSearch']);
-Route::post('Product/addCart/{id}', [PaymentCntroller::class, 'addCart']);
+Route::get('Cart', [PaymentController::class, 'Cart']);
+Route::post('Product/addCart/{id}', [PaymentController::class, 'addCart']);
 
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
