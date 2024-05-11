@@ -158,9 +158,11 @@
 
                         <form action="{{ route('logout') }}" method="get">
                             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
-
-                            <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-                            
+           
+                <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+                    
+               
+                           
                             @auth
                             @csrf
 

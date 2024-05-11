@@ -47,7 +47,7 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 @if (!empty($getProductImages) && !empty($getProductImages->getLogo()))
                                 <div class="product__details__pic__item">
-                                    <img src="{{$getProductImages->getLogo()}}" alt="">
+                                    <img id='image_name' src="{{$getProductImages->getLogo()}}" alt="">
                                 </div>
                             </div>
 

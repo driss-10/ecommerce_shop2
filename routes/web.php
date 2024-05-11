@@ -96,8 +96,12 @@ Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->
 Route::get('/About', [EcommerceController::class, 'About'])->name('About');
 Route::get('/CheckOut', [EcommerceController::class, 'CheckOut'])->name('CheckOut');
 Route::get('search', [EcommerceController::class, 'getProductSearch']);
+
+
 Route::get('/Cart', [PaymentController::class, 'Cart']);
+Route::get('/delete/{id}', [PaymentController::class, 'delete']);
 Route::post('Product/addCart/{id}', [PaymentController::class, 'addCart']);
+
 
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
