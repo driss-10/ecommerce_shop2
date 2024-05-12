@@ -112,6 +112,9 @@ Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
 
 
+Route::get('/forgot', [EcommerceAuthController::class, 'forgot']);
+Route::post('/forgot', [EcommerceAuthController::class, 'forgot_password'])->name('auth.password');
+
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
