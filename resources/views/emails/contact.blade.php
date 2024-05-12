@@ -1,5 +1,5 @@
 <x-mail::message>
-# hellow
+# Hello
 <h3>You have a message </h3>
 <h3> Name : {{ $data['name']}}</h3>
 <h3> Email : {{ $data['email']}}</h3>

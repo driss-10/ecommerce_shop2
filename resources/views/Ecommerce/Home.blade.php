@@ -36,44 +36,6 @@
 </section>
 
 
-@if ($getPartner->count())
-<div class="mb-6"></div>
-<div class="brands-border owl-carousel owl-simple" data-toggle="owl" 
-    data-owl-options='{
-        "nav": false, 
-        "dots": false,
-        "margin": 0,
-        "loop": false,
-        "responsive": {
-            "0": {
-                "items":2
-            },
-            "420": {
-                "items":3
-            },
-            "600": {
-                "items":4
-            },
-            "900": {
-                "items":5
-            },
-            "1024": {
-                "items":6
-            },
-            "1360": {
-                "items":7
-            }
-        }
-    }'>
-    @foreach ($getPartner as $partner)
-        @if (!empty($partner->getImage()))
-            <a href="{{!empty($partner->button_link) ? $partner->button_link : '#' }}"  >
-                <img src="{{$partner->getImage() }}">
-            </a>
-        @endif
-    @endforeach
-</div>
-@endif
 
 
 
@@ -106,16 +68,8 @@
     <section class="banner spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 offset-lg-4">
-                    <div class="text-centre">
-                        <h2>All Categorys</h2>
-                    </div>
-                        
-                        
-                       
-                    @foreach ($getCategory as $category) 
-                     <br>
-                            
+                <div class="col-lg-7 offset-lg-4">                      
+                    @foreach ($getCategory as $category)                                  
                                 @if (!empty($category->getImage() ))
                                     <div class="banner__item">
                                         <div class="banner__item__pic">
@@ -124,7 +78,7 @@
                                             </a>
                                         </div>
                                         <div class="banner__item__text">
-                                            <h2 style="font-weight: bold; font-family: Arial, sans-serif;">{{$category->name}}</h2>
+                                            <h2>{{$category->name}}</h2>
                                             @if (!empty($category->button_name))
                                                 <a href="{{url($category->slug)}}">
                                                     <i>{{$category->button_name}}</i>
@@ -142,10 +96,6 @@
         </div>
     </section>
 @endif 
-
-
-
-
 
 
 
@@ -280,6 +230,45 @@
         </div>
     </div>
 </section>
+@if ($getPartner->count())
+<div class="mb-6"></div>
+<div class="brands-border owl-carousel owl-simple" data-toggle="owl" 
+    data-owl-options='{
+        "nav": false, 
+        "dots": false,
+        "margin": 0,
+        "loop": false,
+        "responsive": {
+            "0": {
+                "items":2
+            },
+            "420": {
+                "items":3
+            },
+            "600": {
+                "items":4
+            },
+            "900": {
+                "items":5
+            },
+            "1024": {
+                "items":6
+            },
+            "1360": {
+                "items":7
+            }
+        }
+    }'>
+    @foreach ($getPartner as $partner)
+        @if (!empty($partner->getImage()))
+            <a href="{{!empty($partner->button_link) ? $partner->button_link : '#' }}"  >
+                <img src="{{$partner->getImage() }}">
+            </a>
+        @endif
+    @endforeach
+</div>
+@endif
+
 <!-- Latest Blog Section End -->
 
 <script src="assets/js/jquery.min.js"></script>

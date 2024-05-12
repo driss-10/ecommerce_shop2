@@ -122,7 +122,6 @@ Route::group(['midlleware' => 'admin'], function () {
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 
 
-Route::get('{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
 
 Route::get('/', [HomeController::class, 'Home'])->name('Home');
 /* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
