@@ -82,7 +82,9 @@ class PaymentController extends Controller
 
     public function Cart(Request $request)
     {
-
+        if (!auth()->check()) {
+            return redirect()->route('Login');
+        }
         $cartItems = Cart::getContent();
 
         $subtotal = Cart::getSubTotal();
@@ -106,20 +108,19 @@ class PaymentController extends Controller
     }
 
 
-  
 
-public function delete($id)
-{
-    // Call the remove method from the Cart model
-    Cart::remove($id);
-    
-    // Redirect back to the cart page
-    return redirect()->back()->with('success', 'Item removed from cart successfully.');
-}
-public function show (Request $request){
-    $cartItems = Cart::getContent();
-    return view('layouts.app', compact('cartItems'));
 
-}
+    public function delete($id)
+    {
+        // Call the remove method from the Cart model
+        Cart::remove($id);
 
+        // Redirect back to the cart page
+        return redirect()->back()->with('success', 'Item removed from cart successfully.');
+    }
+    public function show(Request $request)
+    {
+        $cartItems = Cart::getContent();
+        return view('layouts.app', compact('cartItems'));
+    }
 }
