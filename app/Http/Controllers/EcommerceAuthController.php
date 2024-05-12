@@ -27,13 +27,13 @@ class EcommerceAuthController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           /*  'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],  */// Add validation for last name
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-          /*   'password' => ['required', 'confirmed', 'min:8'],
+            'name' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],  
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', 'min:8'],
             'phone' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'codepostal' => ['required', 'string', 'max:5', 'min:5'], */
+            'codepostal' => ['required', 'string', 'max:5', 'min:5'],
         ]); 
     
         $user = new User();
