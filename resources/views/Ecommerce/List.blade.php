@@ -52,17 +52,16 @@
                 <div class="shop__sidebar">
 
                     <div class="shop__sidebar__search">
-                        <a href="" role="button" title="search"><span class="icon_search"></span></a>
+                        <div style="display: flex;">
+                        <div href="" role="button" style="margin-right: 10px; margin-top:5px;" title="search"><span class="icon_search"></span></div>
                         <form action="{{url('search')}}" method="get">
                             <input type="search" placeholder="Search..." name='q' id='q' value="{{!empty(Request::get('q'))}}">
                             <!--  <button type="submit"><span class="icon_search"></span></button> -->
-
                         </form>
+                        </div>
                         <form form action="" id="FilterForm" method="post">
                             {{csrf_field()}}
-                            <input type="text" name="sub_category_id" id="get_category_id">
-                            <input type="text" name="brand_id" id="get_brand_id">
-                            <input type="text" name="color_id" id="get_color_id">
+
                         </form>
                     </div>
                     <div class="shop__sidebar__accordion">

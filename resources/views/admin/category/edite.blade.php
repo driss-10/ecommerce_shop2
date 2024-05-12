@@ -23,7 +23,7 @@
                         <div class="col-md-12">
 
                             <div class="card card-primary">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="card-body">
                                 <div class="form-group">
@@ -46,6 +46,27 @@
                                     </select>
                                 </div>
                                 <hr>
+                                    <div class="form-group">
+                                        <label >Image<span style="color:red">*</span></label></label>
+                                        <input type="file" class="form-control"  name="image_name" >
+                                        @if (!empty($getRecord->getImage()))
+                                            <img src="{{ $getRecord->getImage() }}" style="height: 100px" >
+
+                                        @endif
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label >Button Name<span style="color:red">*</span></label></label>
+                                        <input type="text" class="form-control"  name="button_name"  value="{{old('button_name',$getRecord->button_name)}}" 
+                                        placeholder="Button Name" >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display:block;">Home Screen <span style="color:red">*</span></label></label>
+                                        <input type="checkbox" {{!empty($getRecord->is_home) ? 'checked' : ''}}   name="is_home" >
+                                    </div>
+                                <hr>
+
                                     <div class="form-group">
                                         <label >Meta title</label>
                                         <input type="text" class="form-control"  name="meta_title"  value="{{old('meta_title',$getRecord->meta_title)}}" 

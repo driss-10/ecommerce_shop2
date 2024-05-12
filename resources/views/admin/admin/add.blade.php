@@ -30,20 +30,20 @@
                                 <div class="card-body">
                                 <div class="form-group">
                                     <label >Name</label>
-                                    <input type="text" class="form-control"  name="name"  value="{{old('name')}}" id="exampleInputEmail1" placeholder="Enter Name">
+                                    <input type="text" class="form-control" required name="name"  value="{{old('name')}}" id="exampleInputEmail1" placeholder="Enter Name">
                                 </div>
                                 <div class="form-group">
                                     <label >email</label>
-                                    <input type="email" class="form-control"  name="email" value="{{old('name')}}" id="exampleInputEmail1" placeholder="Enter Email">
+                                    <input type="email" class="form-control" required  name="email" value="{{old('name')}}" id="exampleInputEmail1" placeholder="Enter Email">
                                     <div style="color:red">{{$errors->first('email')}}</div>
                                 </div>
                                 <div class="form-group">
                                     <label >Password</label>
-                                    <input type="password" class="form-control" name="password"  placeholder="Password">
+                                    <input type="password" class="form-control" required name="password"  placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label >status</label>
-                                    <select class="form-control" name="status">
+                                    <select class="form-control" required name="status">
                                     <option {{(old('status') == 0)}} value="0">Active</option>
                                     <option {{(old('status') == 1)}} value="1">Inactive</option>
                                     </select>

@@ -41,6 +41,17 @@ class CategoryModel extends Model
             ->orderBy('category.name', 'asc')
             ->get();
     }
+
+    static public function getRecordActiveHome()
+    {
+        return self::select('category.*')
+            ->join('users', 'users.id', '=', 'category.created_by')
+            ->where('category.is_delete', '=', 0)
+            ->where('category.is_home', '=', 1)
+            ->where('category.status', '=', 0)
+            ->orderBy('category.id', 'asc')
+            ->get();
+    }
     static public function getRecordMenu()
     {
         return self::select('category.*')
@@ -48,6 +59,19 @@ class CategoryModel extends Model
             ->where('category.is_delete', '=', 0)
             ->where('category.status', '=', 0)
             ->get();
+    }
+
+    public function getImage()
+    {
+        if(!empty($this->image_name) && file_exists('image/category/'.$this->image_name))
+        {
+            return url('image/category/'.$this->image_name);
+        }
+        else
+        {
+            return "";
+        }
+
     }
    
     

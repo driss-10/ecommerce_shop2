@@ -31,6 +31,8 @@ class ProductModel extends Model
             ->paginate(20);
     }
 
+   
+
     static public function getProduct($category_id = '', $subcategory_id = '')
     {
         $request = app('request');

@@ -82,25 +82,34 @@
                                 <div class="product__details__option__size">
                                     <select name="size_id" id="size_id" require>
                                         <option>Select a Size</option>
-                                        @foreach ($getProduct->getSize as $size)
-                                        <option value="{{ $size->name }}">
-                                            {{ $size->name }}
-                                            @if (!empty($size->price))
-                                            {{ number_format($size->price, 2) }}$
-                                            @endif
-                                        </option>
-                                        @endforeach
+                                            @foreach ($getProduct->getSize as $size)
+                                                <option value="{{ $size->name }}">
+                                                    {{ $size->name }}
+                                                        @if (!empty($size->price))
+                                                            {{ number_format($size->price, 2) }}$
+                                                        @endif
+                                                </option>
+                                            @endforeach
                                     </select>
                                 </div>
                                 @endif
 
                                 @if (!empty($getProduct->getColor->count()))
-                                <div class="product__details__option__color">
+                                <div class="product__details__option__color" style="margin-bottom: 10px;">
 
-                                    <!--                            @foreach ($getProduct->getColor as $color)
-                                <label style="background: {{$color->getColor->code}};" class="c-1" for="color_id">
-                                    <input type="radio" id="{color_id" name="color_id" value="{{$color->getColor->id}}">
-                                </label>
+                                        <!--                            @foreach ($getProduct->getColor as $color)
+                                    <label style="background: {{$color->getColor->code}};" class="c-1" for="color_id">
+                                        <input type="radio" id="{color_id" name="color_id" value="{{$color->getColor->id}}">
+                                    </label>
+
+
+                                    @endforeach -->
+                                        <select name="color" id="color" style="padding-top: 5px;">
+                                            <option>Select a Color</option>
+                                            @foreach ($getProduct->getColor as $color)
+                                                <option value="{{$color->getColor->id}}"> {{$color->getColor->name}}</option>
+                                            @endforeach
+                                        </select>
 
                                 @endforeach -->
                                     <select name="color_id" id="color_id">
@@ -109,6 +118,7 @@
                                         <option value="{{$color->getColor->id}}"> {{$color->getColor->name}}</option>
                                         @endforeach
                                     </select>
+
 
                                 </div>
 
@@ -167,13 +177,8 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-5" role="tabpanel">
                                     <div class="product__details__tab__content">
-                                        <p class="note">{{$getProduct->description}}</p>
-                                        <div class="product__details__tab__content__item">
-                                            <h5>Products Infomation</h5>
-                                            <p>{{$getProduct->additional_information}}</p>
-
-                                        </div>
-
+                                        <p>{{$getProduct->description}}</p>
+                                        
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
@@ -184,20 +189,12 @@
 
                                         </div>
                                         <div class="product__details__tab__content__item">
-                                            <h5>Material used</h5>
-                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
-                                                from synthetic materials, not natural like wool. Polyester suits become
-                                                creased easily and are known for not being breathable. Polyester suits
-                                                tend to have a shine to them compared to wool and cotton suits, this can
-                                                make the suit look cheap. The texture of velvet is luxurious and
-                                                breathable. Velvet is a great choice for dinner party jacket and can be
-                                                worn all year round.</p>
+                                            
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-7" role="tabpanel">
                                     <div class="product__details__tab__content">
-                                        <p class="note">{{$getProduct->description}}</p>
                                         <div class="product__details__tab__content__item">
                                             <h5>Products Infomation</h5>
                                             <p>{{$getProduct->additional_information}}</p>

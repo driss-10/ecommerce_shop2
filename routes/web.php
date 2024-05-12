@@ -14,7 +14,20 @@ use App\Http\Controllers\EcommerceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageController;
+
+use App\Http\Controllers\admin\SlideController;
+use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\PartnerController;
+use App\Http\Controllers\PaymentCntroller;
+
+
+
+
+
+
+
 use App\Http\Controllers\PaymentController;
+
 
 Route::get('admin', function () {
     return view('admin.auth.login');
@@ -75,6 +88,25 @@ Route::group(['midlleware' => 'admin'], function () {
     Route::post('admin/brand/edite/{id}', [BrandController::class, 'update']);
     Route::get('admin/brand/delete/{id}', [BrandController::class, 'delete']);
 
+    Route::get('admin/slider/list', [SlideController::class, 'list']);
+    Route::get('admin/slider/add', [SlideController::class, 'add']);
+    Route::POST('admin/slider/add', [SlideController::class, 'insert']);
+    Route::get('admin/slider/edite/{id}', [SlideController::class, 'edite']);
+    Route::post('admin/slider/edite/{id}', [SlideController::class, 'update']);
+    Route::get('admin/slider/delete/{id}', [SlideController::class, 'delete']);
+
+
+    Route::get('admin/partner/list', [PartnerController::class, 'list']);
+    Route::get('admin/partner/add', [PartnerController::class, 'add']);
+    Route::POST('admin/partner/add', [PartnerController::class, 'insert']);
+    Route::get('admin/partner/edite/{id}', [PartnerController::class, 'edite']);
+    Route::post('admin/partner/edite/{id}', [PartnerController::class, 'update']);
+    Route::get('admin/partner/delete/{id}', [PartnerController::class, 'delete']);
+
+
+
+
+
 
 
     Route::get('admin/color/list', [ColorController::class, 'list']);
@@ -89,7 +121,14 @@ Route::group(['midlleware' => 'admin'], function () {
 
 Route::get('/', [EcommerceController::class, 'Home'])->name('Home');
 
+
+
+Route::get('/', [HomeController::class, 'Home'])->name('Home');
+/* Route::get('/Shop/{slug?}', [EcommerceController::class, 'Shop'])->name('Shop'); */
+Route::get('/Shop', [EcommerceController::class, 'Shop'])->name('Shop');
+
 Route::get('/List/{slug?}/{subslug?}', [EcommerceController::class, 'List'])->name('List');
+
 
 Route::post('/get_Poduct_Ajax', [EcommerceController::class, 'getPoductAjax'])->name('getPoductAjax');
 

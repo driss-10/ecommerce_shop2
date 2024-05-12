@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoryModel;
-use App\Models\ProductModel;
-use App\Models\ColorModel;
 use App\Models\BrandModel;
-use App\Models\SubCategoryModel;
+use App\Models\ColorModel;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use App\Models\CategoryModel;
+use App\Models\SubCategoryModel;
 
 class EcommerceController extends Controller
 {
-    public function Home()
-    {
-        return view('Ecommerce.Home');
-    }
+  
     public function Shop()
     {
 
