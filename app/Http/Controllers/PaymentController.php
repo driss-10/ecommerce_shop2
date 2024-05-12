@@ -9,6 +9,7 @@ use App\Models\ColorModel;
 use App\Models\ProductImageModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Issuing\Card;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -81,8 +82,11 @@ class PaymentController extends Controller
 
     public function Cart(Request $request)
     {
+
         $cartItems = Cart::getContent();
+
         $subtotal = Cart::getSubTotal();
+
 
 
 
@@ -100,11 +104,22 @@ class PaymentController extends Controller
         } */
         return view('Ecommerce.ShoppingCart', compact('cartItems', 'subtotal'));
     }
-    public function delete($id)
-    {
-         Cart::remove($id);
+
+
+  
+
+public function delete($id)
+{
+    // Call the remove method from the Cart model
+    Cart::remove($id);
     
-        return redirect()->back();
-    }
-    
+    // Redirect back to the cart page
+    return redirect()->back()->with('success', 'Item removed from cart successfully.');
+}
+public function show (Request $request){
+    $cartItems = Cart::getContent();
+    return view('layouts.app', compact('cartItems'));
+
+}
+
 }

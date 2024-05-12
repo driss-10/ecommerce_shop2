@@ -48,27 +48,34 @@
                 @guest
                 <a href="/Login">Sign in</a>
                 @endguest
-                <a href="#">FAQs</a>
+
             </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
+
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
-            <a href="#"><img src="{{url('')}}/img/icon/heart.png" alt=""></a>
-            <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-            <div class="price"></div>
+
+            <form action="{{ route('logout') }}" method="get">
+                <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
+
+                <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+
+
+
+                @auth
+                @csrf
+
+                <a href="/profile">
+                    <img src="img/icon/user.png" width="18px" alt="">
+                </a>
+                <button class="btn btn-primary btn-sm" type="submit">Logout</button>
+                @endauth
+
+            </form>
 
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
+
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -80,9 +87,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
 
-                        <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
-                        </div>
+
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
@@ -92,20 +97,17 @@
                                 <a href="/Login">Sign in</a>
                                 @endguest
 
-                                <a href="#">FAQs</a>
-                            </div>
-                            <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
-                                <ul>
-                                    <li>USD</li>
-                                    <li>EUR</li>
-                                    <li>USD</li>
-                                </ul>
-                            </div>
 
+                            </div>
+                            @auth
+                            @csrf
                             <div class="header__top__links">
                                 <a href="/admin/dashboard">Go To Admin</a>
                             </div>
+
+                            @endauth
+
+
                         </div>
                     </div>
                 </div>
@@ -158,11 +160,11 @@
 
                         <form action="{{ route('logout') }}" method="get">
                             <a href="#" class="search-switch"><img src="{{url('')}}/img/icon/search.png" alt=""></a>
-           
-                <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
-                    
-               
-                           
+
+                            <a href="{{url('Cart')}}"><img src="{{url('')}}/img/icon/cart.png" alt=""> <span>0</span></a>
+
+
+
                             @auth
                             @csrf
 

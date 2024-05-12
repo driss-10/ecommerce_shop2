@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Shop Details Section Begin -->
-<form action="{{url('Product/addCart' ,$getProduct->id )}}" method="post">
+<form action="{{url('Product/addCart' )}}" method="post">
     <input type="hidden" name="Product_id" value="{{$getProduct->id }}">
         @csrf
 <section class="shop-details">

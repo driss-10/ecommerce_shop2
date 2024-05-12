@@ -100,14 +100,15 @@ Route::get('search', [EcommerceController::class, 'getProductSearch']);
 
 Route::get('/Cart', [PaymentController::class, 'Cart']);
 Route::get('/Cart/delete/{id}', [PaymentController::class, 'delete']);
-Route::post('Product/addCart/{id}', [PaymentController::class, 'addCart']);
+
+Route::post('Product/addCart', [PaymentController::class, 'addCart']);
 
 
 
 Route::get('/Login', [EcommerceAuthController::class, 'Login'])->name('Login');
   
 Route::post('Login', [EcommerceAuthController::class, 'handllogin'])->name('auth.login');
-Route::post('/Logout', [EcommerceAuthController::class, 'logout'])->name('logout'); // Changed to GET method
+Route::get('/Logout', [EcommerceAuthController::class, 'logout'])->name('logout'); // Changed to GET method
 Route::get('/Register', [EcommerceAuthController::class, 'Register'])->name('add');
 Route::post('/Register', [EcommerceAuthController::class, 'store'])->name('auth.store');
 

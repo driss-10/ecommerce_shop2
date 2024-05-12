@@ -81,10 +81,11 @@ use Gloudemans\Shoppingcart\Facades\Cart as ShoppingCart;
                                 </td>
                                 <td class="cart__price">${{ number_format($getCartProduct->price ,2)}}</td>
                                 <td class="cart__close">
-    <a href="{{ url('Cart/delete',$item['id'] ) }}">
-        <i class="fa fa-close"></i>
-    </a>
-</td>
+                                    <a href="{{ url('/Cart/delete',$getCartProduct->id ) }}">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                </td>
+                                
 
 
                             </tr>
@@ -119,8 +120,8 @@ use Gloudemans\Shoppingcart\Facades\Cart as ShoppingCart;
                     <h6>Cart total</h6>
 
                     <ul>
-                        <li>Subtotal <span>$ 169.50</span></li>
-                        <li>Total <span>$ {{Cart::getSubTotal() }}</span></li>
+                        <li>Subtotal <span>$ {{(number_format(Cart::getSubTotal() ,2))}}</span></li>
+                        <li>Total <span>$ {{(number_format(Cart::getSubTotal() ,2))}}</span></li>
 
 
                     </ul>
