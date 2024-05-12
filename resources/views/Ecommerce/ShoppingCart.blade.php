@@ -2,7 +2,13 @@
 @section('title' ,'Shopping Cart')
 
 @section('content')
+@php
+use App\Models\Cart;
+use Gloudemans\Shoppingcart\Facades\Cart as ShoppingCart;
 
+
+
+@endphp
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-option">
     <div class="container">
@@ -25,7 +31,9 @@
 <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
     <div class="container">
+
         <div class="row">
+
             <div class="col-lg-8">
                 <div class="shopping__cart__table">
                     <table>
@@ -34,41 +42,56 @@
                                 <th>Product</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
+
                                 <th></th>
                             </tr>
+                            @foreach ($cartItems as $item)
+                            @php
+                            $price = $item['price'] ?? 0;
+                            $productId = $item['id'] ?? null; // Ensure 'id' exists, otherwise default to null
+                            $getCartProduct = null; // Initialize $getCartProduct
+                            if ($productId) {
+                            $getCartProduct = App\Models\ProductModel::getSingle($productId);
+                            }
+                            $getProductImage = $getCartProduct ? $getCartProduct->getImageSingle($getCartProduct->id) : null;
+                            @endphp
                         </thead>
 
-
-                        @foreach ($cart as $carts )
                         <tbody>
-
                             <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
-                                        <img src="{{ asset($carts->image_name) }}" alt="">
-                                        <img src="{{ $carts->image_name}}" alt="">
+                                        <img src="{{ $getProductImage->getLogo()}}" width="90px" height="90px" alt="">
+                                        <img src="" alt="">
+                                    </div>
 
-                                    </div>
                                     <div class="product__cart__item__text">
-                                        <h6>{{ $carts->title}}</h6>
-                                        <h5>${{ $carts->price}}</h5>
+                                        <h6>{{$getCartProduct->title}}</h6>
+                                        <h5>{{ collect(Cart::getContent())->count() }}</h5>
+                                        <h5>${{ number_format($getCartProduct->price  * $item['quantity'] ,2)}}</h5>
                                     </div>
+
                                 </td>
                                 <td class="quantity__item">
                                     <div class="quantity">
                                         <div class="pro-qty-2">
-                                            <input type="text" value="{{ $carts->quantity}}">
+                                            <input type="text" value="{{ $item['quantity']}}">
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart__price">$ 30.00</td>
-                                <td class="cart__close"><a href="{{url('delete',$carts->id)}}"><i class="fa fa-close"></i></a></td>
+                                <td class="cart__price">${{ number_format($getCartProduct->price ,2)}}</td>
+                                <td class="cart__close">
+    <a href="{{ url('Cart/delete',$item['id'] ) }}">
+        <i class="fa fa-close"></i>
+    </a>
+</td>
+
+
                             </tr>
-
-
 
                         </tbody>
                         @endforeach
+
                     </table>
                 </div>
                 <div class="row">
@@ -94,15 +117,22 @@
                 </div>
                 <div class="cart__total">
                     <h6>Cart total</h6>
+
                     <ul>
                         <li>Subtotal <span>$ 169.50</span></li>
-                        <li>Total <span>$ 169.50</span></li>
+                        <li>Total <span>$ {{Cart::getSubTotal() }}</span></li>
+
+
                     </ul>
+
                     <a href="#" class="primary-btn">Proceed to checkout</a>
                 </div>
             </div>
+
         </div>
+
     </div>
+
 </section>
 <!-- Shopping Cart Section End -->
 

@@ -5,9 +5,12 @@
 @section('content')
 
 <!-- Shop Details Section Begin -->
-<section class="shop-details">
-    <form action="{{url('Product/addCart' ,$getProduct->id )}}" method="post">
+<form action="{{url('Product/addCart' ,$getProduct->id )}}" method="post">
+    <input type="hidden" name="Product_id" value="{{$getProduct->id }}">
         @csrf
+<section class="shop-details">
+    
+      
         <div class="product__details__pic">
             <div class="container">
                 <div class="row">
@@ -100,7 +103,7 @@
                                 </label>
 
                                 @endforeach -->
-                                    <select name="color" id="color">
+                                    <select name="color_id" id="color_id">
                                         <option>Select a Color</option>
                                         @foreach ($getProduct->getColor as $color)
                                         <option value="{{$color->getColor->id}}"> {{$color->getColor->name}}</option>
@@ -209,9 +212,10 @@
                 </div>
             </div>
         </div>
-    </form>
+    
 
 </section>
+</form>
 <!-- Shop Details Section End -->
 
 <!-- Related Section Begin -->
@@ -275,7 +279,7 @@
 
         </div>
     </div>
-
+   
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
@@ -285,6 +289,7 @@
         });
     </script> -->
 </section>
+
 <!-- Related Section End -->
 
 
