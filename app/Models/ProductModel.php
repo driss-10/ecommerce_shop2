@@ -31,7 +31,7 @@ class ProductModel extends Model
             ->paginate(20);
     }
 
-   
+
 
     static public function getProduct($category_id = '', $subcategory_id = '')
     {
@@ -66,10 +66,9 @@ class ProductModel extends Model
             $brand_id_arry = explode(",", $brand_id);
             $return = $return->whereIn('product.brand_id', $brand_id_arry);
         }
-        if (!empty($request->get('q')))
-        {
-            
-            $return = $return->where('product.title', 'like','%'.Request::get('q').'%');
+        if (!empty($request->get('q'))) {
+
+            $return = $return->where('product.title', 'like', '%' . Request::get('q') . '%');
         }
         if (!empty($request->get('color_id'))) {
             $color_id = rtrim($request->get('color_id'), ',');
@@ -81,7 +80,7 @@ class ProductModel extends Model
             ->where('product.status', '=', 0)
             /* ->groupBy('product.id') */
             ->orderBy('product.id', 'desc')
-            ->paginate(2);
+            ->paginate(25);
         return $return;
     }
 
@@ -92,7 +91,7 @@ class ProductModel extends Model
 
     static public function getRelatedProduct($product_id, $sub_category_id)
     {
-      
+
         $return = ProductModel::select(
             'product.*',
             'users.name as created_by_name',
@@ -141,7 +140,7 @@ class ProductModel extends Model
     }
     public function getCategory()
     {
-        return $this->belongsTo(CategoryModel::class,'category_id');
+        return $this->belongsTo(CategoryModel::class, 'category_id');
     }
     public function getSubcategory()
     {

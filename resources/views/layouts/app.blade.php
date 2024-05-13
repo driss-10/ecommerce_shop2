@@ -9,10 +9,7 @@
     <title> @yield('title') {{!empty($meta_title)? $meta_title : ''}} </title>
 
     @if (!empty($meta_Keywords))
-    <meta name="Keywords" content="{{$meta_Keywords}}" >
-    @endif 
-    @if (!empty($meta_Description)) 
-    <meta name="Description" content="{{$meta_Description}}">
+    <meta name="Keywords" content="{{$meta_Keywords}}" @endif @if (!empty($meta_Description)) <meta name="Description" content="{{$meta_Description}}">
     @endif
 
     <!-- Google Font -->
@@ -100,7 +97,7 @@
                                 <a href="/Login">Sign in</a>
                                 @endguest
 
-
+                                
                             </div>
                             @auth
                             @csrf

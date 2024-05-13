@@ -18,8 +18,8 @@
                     @elseif(!empty($getCategory))
                     <h4 class="text-center">{{$getCategory->name}}</h4>
                     @else
-                
-                        <h4>Searsh for {{Request::get('q')}}</h4>
+
+                    <h4>Searsh for {{Request::get('q')}}</h4>
                     <h4 class="text-center">Search for Product</h4>
                     @endif
 
@@ -31,7 +31,7 @@
                         <span>{{$getSubCategory->name}}</span>
                         @elseif(!empty($getCategory))
                         <span>{{$getCategory->name}}</span>
-                        
+
 
                         @endif
 
@@ -53,14 +53,17 @@
 
                     <div class="shop__sidebar__search">
                         <div style="display: flex;">
-                        <div href="" role="button" style="margin-right: 10px; margin-top:5px;" title="search"><span class="icon_search"></span></div>
-                        <form action="{{url('search')}}" method="get">
-                            <input type="search" placeholder="Search..." name='q' id='q' value="{{!empty(Request::get('q'))}}">
-                            <!--  <button type="submit"><span class="icon_search"></span></button> -->
-                        </form>
+                            <div href="" role="button" style="margin-right: 10px; margin-top:5px;" title="search"><span class="icon_search"></span></div>
+                            <form action="{{url('search')}}" method="get">
+                                <input type="search" placeholder="Search..." name='q' id='q' value="{{!empty(Request::get('q'))}}">
+                                <!--  <button type="submit"><span class="icon_search"></span></button> -->
+                            </form>
                         </div>
                         <form form action="" id="FilterForm" method="post">
                             {{csrf_field()}}
+                            <input type="text" name="sub_category_id" id="get_category_id">
+                            <input type="text" name="brand_id" id="get_brand_id">
+                            <input type="text" name="color_id" id="get_color_id">
 
                         </form>
                     </div>

@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title' , 'About Us')
+@section('title' , ' Product Details')
 
 @section('content')
 
 <!-- Shop Details Section Begin -->
 <form action="{{url('Product/addCart' )}}" method="post">
     <input type="hidden" name="Product_id" value="{{$getProduct->id }}">
-        @csrf
-<section class="shop-details">
-    
-      
+    @csrf
+    <section class="shop-details">
+
+
         <div class="product__details__pic">
             <div class="container">
                 <div class="row">
@@ -82,14 +82,14 @@
                                 <div class="product__details__option__size">
                                     <select name="size_id" id="size_id" require>
                                         <option>Select a Size</option>
-                                            @foreach ($getProduct->getSize as $size)
-                                                <option value="{{ $size->name }}">
-                                                    {{ $size->name }}
-                                                        @if (!empty($size->price))
-                                                            {{ number_format($size->price, 2) }}$
-                                                        @endif
-                                                </option>
-                                            @endforeach
+                                        @foreach ($getProduct->getSize as $size)
+                                        <option value="{{ $size->name }}">
+                                            {{ $size->name }}
+                                            @if (!empty($size->price))
+                                            {{ number_format($size->price, 2) }}$
+                                            @endif
+                                        </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 @endif
@@ -97,21 +97,7 @@
                                 @if (!empty($getProduct->getColor->count()))
                                 <div class="product__details__option__color" style="margin-bottom: 10px;">
 
-                                        <!--                            @foreach ($getProduct->getColor as $color)
-                                    <label style="background: {{$color->getColor->code}};" class="c-1" for="color_id">
-                                        <input type="radio" id="{color_id" name="color_id" value="{{$color->getColor->id}}">
-                                    </label>
 
-
-                                    @endforeach -->
-                                        <select name="color" id="color" style="padding-top: 5px;">
-                                            <option>Select a Color</option>
-                                            @foreach ($getProduct->getColor as $color)
-                                                <option value="{{$color->getColor->id}}"> {{$color->getColor->name}}</option>
-                                            @endforeach
-                                        </select>
-
-                                @endforeach -->
                                     <select name="color_id" id="color_id">
                                         <option>Select a Color</option>
                                         @foreach ($getProduct->getColor as $color)
@@ -178,7 +164,7 @@
                                 <div class="tab-pane active" id="tabs-5" role="tabpanel">
                                     <div class="product__details__tab__content">
                                         <p>{{$getProduct->description}}</p>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
@@ -189,7 +175,7 @@
 
                                         </div>
                                         <div class="product__details__tab__content__item">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -209,9 +195,9 @@
                 </div>
             </div>
         </div>
-    
 
-</section>
+
+    </section>
 </form>
 <!-- Shop Details Section End -->
 
@@ -276,7 +262,7 @@
 
         </div>
     </div>
-   
+
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>

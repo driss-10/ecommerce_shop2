@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h1 class="intro-title text-white">{!! $slider->title !!}</h1>
+                                <h2 >{!! $slider->title !!}</h2>
                                 @if (!empty($slider->button_link) && !empty($slider->button_name))
                                     <a href="{{$slider->button_link}}" class="primary-btn" style="margin-bottom: 10px;" >
                                         <span>{{$slider->button_name}}</span>
@@ -37,9 +37,9 @@
 
 
 
+{{--<section>
 
-
-        {{-- <div class="hero__items set-bg" data-setbg="{{$slider->getImage()}}">
+         <div class="hero__items set-bg" data-setbg="{{$slider->getImage()}}">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5 col-lg-7 col-md-8">
@@ -58,9 +58,8 @@
                 </div>
             </div>
         </div> 
-    </div>
+    
 </section>--}}
-
 <!-- Hero Section End -->
 
 <!-- Banner Section Begin -->
